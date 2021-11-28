@@ -16,12 +16,7 @@
 
 
     <div class="owl-carousel-wrapper">
-
-      
-
       <div class="box-92819 shadow-lg">
-        
-
           <div>
             <h1 class=" mb-3 text-black">Liên hệ</h1>
             <p>Liên hệ ngay để cùng Diamond thiết kế giải pháp cho không gian của bạn</p>
@@ -38,6 +33,7 @@
         
         <div class="row">
           <div class="col-lg-6 mb-5" >
+            <h1 class="heading-39291">Thông tin đặt hàng</h1>
             <form action="#" method="post">
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
