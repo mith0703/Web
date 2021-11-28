@@ -79,6 +79,22 @@ class usermodel extends Database
         return false;
     }
 
+
+    public function updateUserAdmin($ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $img_profile, $dia_chi, $id_user)
+    {
+        $stmt = $this->conn->prepare("UPDATE user SET ten_dang_nhap = ?, ho = ?, ten = ?, email = ?, dien_thoai = ?, mat_khau = ?, vai_tro = ?, img_profile=?, dia_chi=? WHERE id_user = ?");
+        $stmt->bind_param("ssssssssss", $ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $img_profile, $dia_chi, $id_user);
+        $status = $stmt->execute();
+        if ($status == true) {
+         
+
+            return true;
+        }
+        return false;
+    }
+
+
+
     public function updateUser($ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $img_profile, $dia_chi, $id_user)
     {
         $stmt = $this->conn->prepare("UPDATE user SET ten_dang_nhap = ?, ho = ?, ten = ?, email = ?, dien_thoai = ?, mat_khau = ?, vai_tro = ?, img_profile=?, dia_chi=? WHERE id_user = ?");

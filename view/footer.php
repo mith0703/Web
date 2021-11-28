@@ -55,9 +55,9 @@
                   </div>
                   <div ><br/>
                       <h5 style="color:black;">THEO DÕI CHÚNG TÔI</h5>
-                      <img height="50px" weight="50px" src="libs/images/youtube.png" onclick="targetImage('https:\\www.youtube.com/feed/trending')" style="cursor:pointer;" />
-                      <img height="50px" weight="50px" src="libs/images/zalo_sharelogo.png"onclick="targetImage('https:\\zalo.me/pc')" style="cursor:pointer;" />
-                      <img height="50px" weight="50px" src="libs/images/fb-logo.png"onclick="targetImage('https:\\www.facebook.com/')" style="cursor:pointer;" />
+                      <img height="50px" weight="50px" src="/mvc/libs/images/youtube.png" onclick="targetImage('https:\\www.youtube.com/feed/trending')" style="cursor:pointer;" />
+                      <img height="50px" weight="50px" src="/mvc/libs/images/zalo_sharelogo.png"onclick="targetImage('https:\\zalo.me/pc')" style="cursor:pointer;" />
+                      <img height="50px" weight="50px" src="/mvc/libs/images/fb-logo.png"onclick="targetImage('https:\\www.facebook.com/')" style="cursor:pointer;" />
                       <br/>
                       <br/>
                         <script>
@@ -82,6 +82,7 @@
     <script src="/mvc/libs/js/jquery-3.3.1.min.js"></script>
     <script src="/mvc/libs/js/popper.min.js"></script>
     <script src="/mvc/libs/js/bootstrap.min.js"></script>
+    <script src="/mvc/libs/js/private.js"></script>
     <script src="/mvc/libs/js/owl.carousel.min.js"></script>
     <script src="/mvc/libs/js/jquery.sticky.js"></script>
     <script src="/mvc/libs/js/jquery.waypoints.min.js"></script>
@@ -91,8 +92,17 @@
     <script src="/mvc/libs/js/aos.js"></script>
 
     <script src="/mvc/libs/js/main.js"></script>
-   <script src="/mvc/libs/js/private.js"></script>
-     
+   
+    <script>
+  (function(d, s, id, t) {
+    if (d.getElementById(id)) return;
+    var js, fjs = d.getElementsByTagName(s)[0];
+    js = d.createElement(s);
+    js.id = id;
+    js.src = 'https://widget.oncustomer.asia/js/index.js?token=' + t;
+    fjs.parentNode.insertBefore(js, fjs);}
+  (document, 'script', 'oc-chat-widget-bootstrap', 'b398f25f0976aef1f13958de424f8ae9'));
+</script>
 
   </body>
 

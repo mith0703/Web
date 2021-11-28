@@ -37,6 +37,12 @@
 	require_once "./core/Controller.php";
 	require_once "./core/Database.php";
 	$myApp =  new App();
+	
+	// require_once "./model/usermodel.php";
+	// $admin = new usermodel();
+	// $result = $admin->getAllUser();
+	// print_r($result);
+	
 
 	// echo isset( $_SESSION['ten_dang_nhap']);
 

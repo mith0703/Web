@@ -98,6 +98,7 @@ class User extends Controller
             $this->view("signup", []);
         }
     }
+
     function login()
     {
         $username = "";
