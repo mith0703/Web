@@ -24,7 +24,6 @@
                     && in_array($extension, $allowedExts)
                 ) {
                     if ($file["file"]["error"] == 0) {
-                        echo "dang chay upload file user";
                        if (!file_exists("public/upload/user/$ten_dang_nhap"))
                             mkdir("public/upload/user/" . $ten_dang_nhap , 0777, 1);
                         if (file_exists("public/upload/user/" . $ten_dang_nhap . $file["file"]["name"])) {

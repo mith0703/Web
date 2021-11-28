@@ -7,7 +7,7 @@
       
       <!-- Login Form -->
       <p style='color: green'>
-      <?php echo $data['msg'] ?? "Không có message" ?></p>
+      <?php echo $data['msg'] ?? "" ?></p>
       <?php
                     if (isset($data['err'])) {
                         echo "<p style='color: red'>" . $data['err'] . "</p>";

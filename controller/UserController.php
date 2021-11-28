@@ -73,7 +73,6 @@ class User extends Controller
                 $success = $signup->insertUser($userName,$firstName,$lastName,$email,$phone,$password,$vai_tro,$img_profile,$address);
 
                 if ($success == true) {
-                    echo "Sign Up Success! Please Login";
                     $msg = "Sign Up Success! Please Login";
                     // $show = "<script>
                                     
@@ -138,7 +137,10 @@ class User extends Controller
                 }
             }
         } else {
-            $this->view("login");
+            $this->view("login", [
+
+                "msg" => $msg,
+            ]);
         }
     }
     function logout()
@@ -185,7 +187,9 @@ class User extends Controller
                     ]);
                     die;
                 }
-                $this->view("pwchange");
+                $this->view("pwchange",[
+                    "msg" => "Lỗi nhập liệu",
+                ]);
             }
         } else {
             $this->view("pwchange");
@@ -286,7 +290,9 @@ class User extends Controller
                 }
             }
         } else {
-            $this->view("profile");
+            $this->view("profile", [
+                'msg'=> "Kiểm tra internet",
+            ]);
         }
     }
 }

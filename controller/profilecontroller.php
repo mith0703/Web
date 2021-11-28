@@ -7,5 +7,12 @@ class Profile extends Controller
     function pwchange() {
         $this->view("pwchange");
     }
+    function adminpage() {
+        $this->view("adminpage");
+    }
+
+    function usermanager() {
+        $this->view("usermanager");
+    }
 }
 ?>
