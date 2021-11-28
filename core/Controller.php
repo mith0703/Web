@@ -2,12 +2,12 @@
     class Controller
     {
         function model($model) {
-            require_once "./mvc/model/" . $model . ".php";
+            require_once "./model/" . $model . ".php";
             return new $model;
         }
 
         function view( $view, $data = []) {
-            require_once "./mvc/view/" . $view . ".php";
+            require_once "./view/" . $view . ".php";
         }
         //PHUC TODO - CHECK VALIDATE INPUT
 
@@ -23,17 +23,28 @@
                     && ($file["file"]["size"] < 5000000)
                     && in_array($extension, $allowedExts)
                 ) {
-                    if ($file["file"]["error"] > 0) {
-                    } else {
-                        if (!file_exists("/mvc/public/upload/user/" . $ten_dang_nhap))
-                            mkdir("/mvc/public/upload/user/" . $ten_dang_nhap);
-                        if (file_exists("/mvc/public/upload/user/" . $ten_dang_nhap . $file["file"]["name"])) {
-                            unlink("/mvc/public/upload/user/" . $ten_dang_nhap . $file["file"]["name"]);
+                    if ($file["file"]["error"] == 0) {
+                        echo "dang chay upload file user";
+                       if (!file_exists("public/upload/user/$ten_dang_nhap"))
+                            mkdir("public/upload/user/" . $ten_dang_nhap , 0777, 1);
+                        if (file_exists("public/upload/user/" . $ten_dang_nhap . $file["file"]["name"])) {
+                            unlink("public/upload/user/" . $ten_dang_nhap . $file["file"]["name"]);
                         }
 
-                        move_uploaded_file($file["file"]["tmp_name"], "./mvc/public/upload/user/" . $ten_dang_nhap . "/" . $file["file"]["name"]);
-                        $img_profile = "/nadu/mvc/public/upload/user/" . $ten_dang_nhap . "/" . $file["file"]["name"];
+                        move_uploaded_file($file["file"]["tmp_name"], "public/upload/user/" . $ten_dang_nhap . "/" . $file["file"]["name"]);
+                        $img_profile = "/mvc/public/upload/user/" . $ten_dang_nhap . "/" . $file["file"]["name"];
                     }
+                    // if ($file["file"]["error"] == 0) {
+                    //     echo "dang chay upload file user";
+                    //    if (!file_exists("/mvc/public/upload/user/$ten_dang_nhap"))
+                    //         mkdir("/mvc/public/upload/user/" . $ten_dang_nhap , 0777, 1);
+                    //     if (file_exists("/mvc/public/upload/user/" . $ten_dang_nhap . $file["file"]["name"])) {
+                    //         unlink("/mvc/public/upload/user/" . $ten_dang_nhap . $file["file"]["name"]);
+                    //     }
+
+                    //     move_uploaded_file($file["file"]["tmp_name"], "/mvc/public/upload/user/" . $ten_dang_nhap . "/" . $file["file"]["name"]);
+                    //     $img_profile = "/mvc/public/upload/user/" . $ten_dang_nhap . "/" . $file["file"]["name"];
+                    // }
                 } else {
                     $img_profile = "";
                 }

@@ -1,3 +1,6 @@
+
+
+
 <footer>
       <div class="d-flex p-2 flex-column flex-wrap align-content-center" style="background-color:#5a5a5a;">
         <div class="d-flex p-2 flex-md-row flex-column gap-3 flex-wrap align-content-center">
@@ -63,9 +66,9 @@
             </div>
             <div ><br/>
                 <h5 style="color:white;">THEO DÕI CHÚNG TÔI</h5>
-                <img height="50px" weight="50px" src="./libs/images/youtube1.png" />
-                <img height="50px" weight="50px" src="./libs/images/zalo_sharelogo.png" />
-                <img height="50px" weight="50px" src="./libs/images/fb-logo.png" />
+                <img height="50px" weight="50px" src="/mvc/libs/images/youtube1.png" />
+                <img height="50px" weight="50px" src="/mvc/libs/images/zalo_sharelogo.png" />
+                <img height="50px" weight="50px" src="/mvc/libs/images/fb-logo.png" />
                 <br/>
                 <br/>
                 <!-- <Image height="50px" weight="50px" src="./images/logoSaleNoti.png"/>
@@ -81,24 +84,23 @@
         </div>
     </div>
     </footer>
+
+    <script src="/mvc/libs/js/jquery-3.3.1.min.js"></script>
     
-    
+    <script src="/mvc/libs/js/private.js"></script>
 
-    </div>
+    <script src="/mvc/libs/js/popper.min.js"></script>
+    <script src="/mvc/libs/js/bootstrap.min.js"></script>
+    <script src="/mvc/libs/js/owl.carousel.min.js"></script>
+    <script src="/mvc/libs/js/jquery.sticky.js"></script>
+    <script src="/mvc/libs/js/jquery.waypoints.min.js"></script>
+    <script src="/mvc/libs/js/jquery.animateNumber.min.js"></script>
+    <script src="/mvc/libs/js/jquery.fancybox.min.js"></script>
+    <script src="/mvc/libs/js/jquery.easing.1.3.js"></script>
+    <script src="/mvc/libs/js/aos.js"></script>
 
-    <script src="./libs/js/jquery-3.3.1.min.js"></script>
-    <script src="./libs/js/popper.min.js"></script>
-    <script src="./libs/js/bootstrap.min.js"></script>
-    <script src="./libs/js/owl.carousel.min.js"></script>
-    <script src="./libs/js/jquery.sticky.js"></script>
-    <script src="./libs/js/jquery.waypoints.min.js"></script>
-    <script src="./libs/js/jquery.animateNumber.min.js"></script>
-    <script src="./libs/js/jquery.fancybox.min.js"></script>
-    <script src="./libs/js/jquery.easing.1.3.js"></script>
-    <script src="./libs/js/aos.js"></script>
-
-    <script src="./libs/js/main.js"></script>
-
+    <script src="/mvc/libs/js/main.js"></script>
+  
      
 
   </body>

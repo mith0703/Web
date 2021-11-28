@@ -1,4 +1,6 @@
-
+<?php
+  require_once("./view/header.php");
+?>
     <div class="owl-carousel-wrapper">
 
       
@@ -243,3 +245,7 @@
   </div>
 </div>
 </div>
+
+<?php
+  require_once("./view/footer.php");
+?>

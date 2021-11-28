@@ -1,6 +1,6 @@
 <?php
-include_once("./model/Database.php");
-class UserModel extends Database
+
+class usermodel extends Database
 {
 
     public function login($ten_dang_nhap, $password){
@@ -11,29 +11,33 @@ class UserModel extends Database
         $result = $stmt->get_result();
         if ( $result->num_rows == 1 ) {
             $row = $result->fetch_assoc();
-            
-            if ( $password === $row['mat_khau'] ) {
+            if ( password_verify($password, $row['mat_khau'])  ) {
+                // $password === $row['mat_khau']
                 // password_verify($password, $row['password'])
+                
                 $_SESSION['id'] = $row['id_user'];
-                $_SESSION['ho_ten'] = $row['ho'] . " " . $row['ten'];
+                $_SESSION['ho'] = $row['ho'];
+                $_SESSION['ten']= $row['ten'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['dien_thoai'] = $row['dien_thoai'];
+                $_SESSION['dia_chi'] = $row['dia_chi'];
                 $_SESSION['ten_dang_nhap'] = $row['ten_dang_nhap'];
                 $_SESSION['vai_tro'] = $row['vai_tro'];
-                echo "dang chay 1";
-                // $_SESSION['img_profile'] = $row['img_profile'];
+                // echo "dang chay login";
+                $_SESSION['img_profile'] = $row['img_profile'];
                 return true;
             }
         }
-
         return false;
     }
 
 
 
 
-    public function insertUser($ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro)
+    public function insertUser($ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $img_profile, $dia_chi)
     {
-        $stmt = $this->conn->prepare("INSERT INTO user (ten_dang_nhap, ho, ten, email, dien_thoai, mat_khau, vai_tro) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro);
+        $stmt = $this->conn->prepare("INSERT INTO user (ten_dang_nhap, ho, ten, email, dien_thoai, mat_khau, vai_tro, img_profile, dia_chi) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssss", $ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $img_profile,$dia_chi);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->affected_rows == 1)
@@ -51,7 +55,7 @@ class UserModel extends Database
 
     public function getUser($id)
     {
-        $stmt = $this->conn->prepare("SELECT id_user, ten_dang_nhap, ho, ten, email, dien_thoai, mat_khau, vai_tro FROM user WHERE id_user = ?");
+        $stmt = $this->conn->prepare("SELECT id_user, ten_dang_nhap, ho, ten, email, dien_thoai, mat_khau, vai_tro,img_profile, dia_chi FROM user WHERE id_user = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -75,14 +79,51 @@ class UserModel extends Database
         return false;
     }
 
-    public function updateUser($ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $id_user)
+    public function updateUser($ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $img_profile, $dia_chi, $id_user)
     {
-        $stmt = $this->conn->prepare("UPDATE user SET ten_dang_nhap = ?, ho = ?, ten = ?, email = ?, dien_thoai = ?, mat_khau = ?, vai_tro = ? WHERE id_user = ?");
-        $stmt->bind_param("ssssssss", $ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $id_user);
+        $stmt = $this->conn->prepare("UPDATE user SET ten_dang_nhap = ?, ho = ?, ten = ?, email = ?, dien_thoai = ?, mat_khau = ?, vai_tro = ?, img_profile=?, dia_chi=? WHERE id_user = ?");
+        $stmt->bind_param("ssssssssss", $ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $mat_khau, $vai_tro, $img_profile, $dia_chi, $id_user);
         $status = $stmt->execute();
         if ($status == true) {
-            $_SESSION['name'] = $ten_dang_nhap;
-            // $_SESSION['img_profile'] = $img_profile;
+            $_SESSION['ho'] = $ho;
+            $_SESSION['ten']= $ten;
+            $_SESSION['email'] = $email;
+            $_SESSION['dien_thoai'] = $dien_thoai;
+            $_SESSION['dia_chi'] = $dia_chi;
+            $_SESSION['ten_dang_nhap'] = $ten_dang_nhap;
+            $_SESSION['vai_tro'] = $vai_tro;
+            $_SESSION['img_profile'] = $img_profile;
+
+            return true;
+        }
+        return false;
+    }
+
+    public function updateUserNoPW($ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $vai_tro, $img_profile, $dia_chi, $id_user)
+    {
+        $stmt = $this->conn->prepare("UPDATE user SET ten_dang_nhap = ?, ho = ?, ten = ?, email = ?, dien_thoai = ?, vai_tro = ?, img_profile=?, dia_chi=? WHERE id_user = ?");
+        $stmt->bind_param("sssssssss", $ten_dang_nhap, $ho, $ten, $email, $dien_thoai, $vai_tro, $img_profile, $dia_chi, $id_user);
+        $status = $stmt->execute();
+        if ($status == true) {
+            $_SESSION['ho'] = $ho;
+            $_SESSION['ten']= $ten;
+            $_SESSION['email'] = $email;
+            $_SESSION['dien_thoai'] = $dien_thoai;
+            $_SESSION['dia_chi'] = $dia_chi;
+            $_SESSION['ten_dang_nhap'] = $ten_dang_nhap;
+            $_SESSION['vai_tro'] = $vai_tro;
+            $_SESSION['img_profile'] = $img_profile;
+            return true;
+        }
+        return false;
+    }
+
+    public function updateUserPW($mat_khau, $id_user)
+    {
+        $stmt = $this->conn->prepare("UPDATE user SET mat_khau=? WHERE id_user = ?");
+        $stmt->bind_param("ss", $mat_khau, $id_user);
+        $status = $stmt->execute();
+        if ($status == true) {
             return true;
         }
         return false;

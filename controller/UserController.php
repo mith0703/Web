@@ -1,116 +1,102 @@
 <?php
-include_once("./controller/Controller.php");
+
 class User extends Controller
 {
     function signup()
     {
         if (isset($_POST['signup'])) {
-            $username = "";
-            $password = "";
-            $fname = "";
-            $lname = "";
-            $address = "";
+            $userName = "";
+            $firstName = "";
+            $lastName = "";
             $email = "";
             $phone = "";
+            $password = "";
+            $passwordConfirm="";
+            $vai_tro = "0";
             $img_profile = "";
+            $address = "";
             $msg = "";
             $success = false;
-            if (isset($_POST['username'])) {
-                $username = $_POST['username'];
+            if (isset($_POST['userName'])) {
+                $userName = $_POST['userName'];
                 //$msg .= "1";
             }
-            if (isset($_POST['password'])) {
-                $password = $_POST['password'];
+            if (isset($_POST['passwordConfirm'])) {
+                $passwordConfirm = $_POST['passwordConfirm'];
+                //$msg .= "1";
+            }
+            if (isset($_POST['firstName'])) {
+                $firstName = $_POST['firstName'];
                 //$msg .= "2";
             }
-            if (isset($_POST['password2'])) {
-                $password2 = $_POST['password2'];
+            if (isset($_POST['lastName'])) {
+                $lastName = $_POST['lastName'];
             }
-            if (isset($_POST['fname'])) {
-                $fname = $_POST['fname'];
+
+            if (isset($_POST['password'])) {
+                $password = $_POST['password'];
                 //$msg .= "3";
-            }
-            if (isset($_POST['lname'])) {
-                $lname = $_POST['lname'];
-                //$msg .= "4";
-            }
-            if (isset($_POST['address'])) {
-                $address = trim($_POST['address']);
-                //$msg .= "5";
             }
             if (isset($_POST['email'])) {
                 $email = $_POST['email'];
-                //$msg .= "6";
+                //$msg .= "4";
             }
             if (isset($_POST['phone'])) {
                 $phone = $_POST['phone'];
+                //$msg .= "5";
+            }
+
+            if (isset($_POST['address'])) {
+                $address = $_POST['address'];
                 //$msg .= "7";
             }
-            if ($username == "" || $password == "" || $fname == "" || $lname == "" || $address == "" || $email == "" || $phone == "" || $password2 == "" || $password != $password2) {
+
+
+            if ($userName == "" || $password == "" || $firstName == "" || $lastName == "" || $address == "" || $email == "" || $phone == "" || $passwordConfirm == "" || $address =="") {
                 $msg = "Please fill all require fields!";
+            }
+            if ( $password != $passwordConfirm ) {
+                $msg = "Mật khẩu không giống nhau";
             } else {
-
-                // Upload file
                 // print_r($_FILES);
-                $img_profile = $this->upload_file_user($username, $_FILES);
-                // if (isset($_FILES["file"])) {
-                //     //add some restrictions to the file upload, filter: .gif, .jpeg, and .png files; and the file size must be under 5MB
-                //     $allowedExts = array("jpg", "jpeg", "gif", "png");
-                //     $nameParts = explode(".", $_FILES["file"]["name"]);
-                //     $extension = end($nameParts);
-                //     if ((($_FILES["file"]["type"] == "image/gif")
-                //             || ($_FILES["file"]["type"] == "image/jpeg")
-                //             || ($_FILES["file"]["type"] == "image/png")
-                //             || ($_FILES["file"]["type"] == "image/pjpeg"))
-                //         && ($_FILES["file"]["size"] < 5000000)
-                //         && in_array($extension, $allowedExts)
-                //     ) {
-                //         if ($_FILES["file"]["error"] > 0) {
-                //             // echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-                //         } else {
-                //             mkdir("./public/upload/user/" . $username);
-                //             if (file_exists("./public/upload/user/" . $username . $_FILES["file"]["name"])) {
-                //                 unlink("./public/upload/user/" . $username . $_FILES["file"]["name"]);
-                //             }
-
-                //             move_uploaded_file($_FILES["file"]["tmp_name"], "./public/upload/user/" . $username . "/" . $_FILES["file"]["name"]);
-                //             $img_profile = "/ltw/public/upload/user/" . $username . "/" . $_FILES["file"]["name"];
-                //         }
-                //     } else {
-                //         //   echo "Invalid file";
-                //         $img_profile = "";
-                //     }
-                // }
-                //End Upload File
-
-
-
-
-
+                $img_profile = $this->upload_file_user($userName, $_FILES);
+             
                 $password = password_hash($password, PASSWORD_DEFAULT);
-                $signup = $this->model("usermodel"); //usermodel la ten file usermodel.php
-                $success = $signup->signup($username, $password, $fname, $lname, $address, $email, $phone, $img_profile);
-                if ($success == true) {
-                    $msg = "Sign Up Success! Please Login";
-                    $show = "<script>
-                                    MySUSModal1.show();
-                                </script>";
 
-                    $this->view("signupview", [
-                        "show" => $show,
+                
+                // $signup = $this->model("usermodel"); //usermodel la ten file usermodel.php
+                
+                require_once("./model/usermodel.php");
+                $signup = new usermodel();
+                // $signup->insertUser()
+                
+                $success = $signup->insertUser($userName,$firstName,$lastName,$email,$phone,$password,$vai_tro,$img_profile,$address);
+
+                if ($success == true) {
+                    echo "Sign Up Success! Please Login";
+                    $msg = "Sign Up Success! Please Login";
+                    // $show = "<script>
+                                    
+                    //             </script>";
+
+                    $this->view("login", [
+                        // "show" => $show,
                         "msg" => $msg,
                     ]);
                     die;
                 }
-                $this->view("signupview", [
+                $this->view("signup", [
+                   
                     "err" => "Username has already taken!",
                 ]);
             }
-            $this->view("signupview", [
+            $this->view("signup", [
+
                 "msg" => $msg,
             ]);
         } else {
-            $this->view("signupview", []);
+            // echo "Dang o day 1";
+            $this->view("signup", []);
         }
     }
     function login()
@@ -120,24 +106,24 @@ class User extends Controller
         $success = false;
         $msg = "";
         if (isset($_POST['login'])) {
-            if (isset($_POST['username'])) {
-                $username = $_POST['username'];
+            if (isset($_POST['userName'])) {
+                $username = $_POST['userName'];
             }
             if (isset($_POST['password'])) {
                 $password = $_POST['password'];
             }
             if ($username == "" || $password == "") {
-                $msg = "Wrong username or password";
+                $msg = "Sai mật khẩu hoặc tên đăng nhập";
             } else {
                 $login = $this->model("usermodel");
                 $success = $login->login($username, $password);
                 if ($success == true) {
                     $msg = "Login success!";
                     $show = "<script>
-                                    MySUSModal1.show();
+                                loginPart.hide();
                                 </script>";
 
-                    $this->view("loginview", [
+                    $this->view("login", [
                         "show" => $show,
                         "msg" => $msg,
                     ]);
@@ -145,28 +131,77 @@ class User extends Controller
                 } else {
                     $msg = "Wrong username or password!";
 
-                    $this->view("loginview", [
+                    $this->view("login", [
                         "err" => $msg,
                     ]);
                     die;
                 }
             }
         } else {
-            $this->view("loginview");
+            $this->view("login");
         }
     }
     function logout()
     {
         session_unset();
         session_destroy();
-        header("location: /ltw/home");
+        header("location: /mvc/home");
     }
+
+    function pwchange(){
+        if (isset($_POST['update'])) {
+            $id = $_SESSION['id'];
+            $password = "";
+            $passwordConfirm="";
+            if (isset($_POST['password'])) {
+                $password = $_POST['password'];
+                //$msg .= "1";
+            }
+           
+            if (isset($_POST['passwordConfirm'])) {
+                $passwordConfirm = $_POST['passwordConfirm'];
+                //$msg .= "2";
+            }
+
+            if ( $password != $passwordConfirm ) {
+                $msg = "Mật khẩu không giống nhau";
+            } else {
+                require_once("./model/usermodel.php");
+                $user = new usermodel();
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                $success = $user->updateUserPW($password, $id);
+                if ($success == true) {
+                    $msg = "Thay đổi mật khẩu thành công";
+                
+                    $this->view("pwchange", [
+                        "msg" => $msg,
+                    ]);
+                    die;
+                } else {
+                    $msg = "Bị lỗi";
+
+                    $this->view("pwchange", [
+                        "err" => $msg,
+                    ]);
+                    die;
+                }
+                $this->view("pwchange");
+            }
+        } else {
+            $this->view("pwchange");
+        }
+    }
+
+
 
     function userprofile()
     {
         $userdata = [];
-        $user = $this->model("usermodel");
-        $userdata = $user->getuser($_SESSION['id']);
+    
+        require_once("./model/usermodel.php");
+        $user = new usermodel();
+    
+        $userdata = $user->getUser($_SESSION['id']);
         // if (isset($id[0])) {
         //     $user = $this->model("usermodel");
         //     $userdata = $user->getuser($id[0]);
@@ -177,93 +212,81 @@ class User extends Controller
 
         if (isset($_POST['update'])) {
 
-            $fname = "";
-            $lname = "";
-            $address = "";
+            $userName = $_SESSION['ten_dang_nhap'];
+            $firstName = "";
+            $lastName = "";
             $email = "";
             $phone = "";
+            // $password = "";
+            // $passwordConfirm="";
+            $vai_tro = "0";
             $img_profile = "";
+            $address = "";
+
+
+
             $id = $_SESSION['id'];
-            if (isset($_POST['fname'])) {
-                $fname = $_POST['fname'];
-                //echo $fname;
+        
+            if (isset($_POST['userName'])) {
+                $userName = $_POST['userName'];
+                //$msg .= "1";
             }
-            if (isset($_POST['lname'])) {
-                $lname = $_POST['lname'];
-                //echo $lname;
+           
+            if (isset($_POST['firstName'])) {
+                $firstName = $_POST['firstName'];
+                //$msg .= "2";
             }
-            if (isset($_POST['address'])) {
-                $address = trim($_POST['address']);
-                //echo $address;
+            if (isset($_POST['lastName'])) {
+                $lastName = $_POST['lastName'];
             }
+
             if (isset($_POST['email'])) {
                 $email = $_POST['email'];
-                //echo $email;
+                //$msg .= "4";
             }
             if (isset($_POST['phone'])) {
                 $phone = $_POST['phone'];
-                //echo $phone;
+                //$msg .= "5";
             }
 
-            if ($fname == "" || $lname == "" || $address == "" || $email == "" || $phone == "") {
+            if (isset($_POST['address'])) {
+                $address = $_POST['address'];
+                //$msg .= "7";
+            }
+
+
+            if ($userName == "" || $firstName == "" || $lastName == "" || $address == "" || $email == "" || $phone == "" || $address =="") {
                 $msg = "Please fill all require fields!";
             } else {
 
-                // Upload file
-                if (isset($_FILES["file"])) {
-
-                    $username = $userdata['username'];
-                    //add some restrictions to the file upload, filter: .gif, .jpeg, and .png files; and the file size must be under 5MB
-                    $allowedExts = array("jpg", "jpeg", "gif", "png");
-                    $nameParts = explode(".", $_FILES["file"]["name"]);
-                    $extension = end($nameParts);
-                    if ((($_FILES["file"]["type"] == "image/gif")
-                            || ($_FILES["file"]["type"] == "image/jpeg")
-                            || ($_FILES["file"]["type"] == "image/png")
-                            || ($_FILES["file"]["type"] == "image/pjpeg"))
-                        && ($_FILES["file"]["size"] < 5000000)
-                        && in_array($extension, $allowedExts)
-                    ) {
-                        if ($_FILES["file"]["error"] > 0) {
-                            // echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-                        } else {
-                            //mkdir("./public/upload/user/" . $username);
-                            if (file_exists("./public/upload/user/" . $username . $_FILES["file"]["name"])) {
-                                unlink("./public/upload/user/" . $username . $_FILES["file"]["name"]);
-                            }
-
-                            move_uploaded_file($_FILES["file"]["tmp_name"], "./public/upload/user/" . $username . "/" . $_FILES["file"]["name"]);
-                            $img_profile = "/ltw/public/upload/user/" . $username . "/" . $_FILES["file"]["name"];
-                        }
-                    } else {
-                        //   echo "Invalid file";
-                        $img_profile = "";
-                    }
+                if ( $_FILES["file"]["error"] == 0){
+                    $img_profile = $this->upload_file_user($userName, $_FILES); 
+                    $success = $user->updateUserNoPW( $userName, $firstName, $lastName, $email, $phone, $vai_tro, $img_profile,  $address, $id );
                 }
-                //End Upload File
-
-                $success = $user->updateuser($fname, $lname, $address, $email, $phone, $img_profile, $id);
+                    else {
+                    $success = $user->updateUserNoPW( $userName, $firstName, $lastName, $email, $phone, $vai_tro, $_SESSION['img_profile'],  $address, $id );
+                }
                 if ($success == true) {
-                    $msg = "Update success!";
-                    $show = "<script>
-                                    MySUSModal1.show();
-                                </script>";
+                    $msg = "Đã cập nhật thành công!";
+                    // $show = "<script>
+                    //                 MySUSModal1.show();
+                    //             </script>";
 
-                    $this->view("userprofileupdateview", [
-                        "show" => $show,
+                    $this->view("profile", [
+                        // "show" => $show,
                         "msg" => $msg,
                     ]);
                     die;
                 } else {
-                    $msg = "Update Failed! Please try again!";
-                    $this->view("userprofileupdateview", [
+                    $msg = "Không cập nhật thành công";
+                    $this->view("profile", [
                         "err" => $msg,
                     ]);
                     die;
                 }
             }
         } else {
-            $this->view("userprofileupdateview", $userdata);
+            $this->view("profile");
         }
     }
 }

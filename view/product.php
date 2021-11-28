@@ -1,4 +1,7 @@
-
+<?php
+  require_once("./view/header.php");
+?>
+ 
     <div class="owl-carousel-wrapper">
 
 
@@ -33,7 +36,7 @@
     <div class="col-md-6 col-12">
       <div class="product">
 
-        <img src="images/bacau.png" />
+        <img src="./libs/images/bacau.png" />
 
 
 
@@ -56,7 +59,7 @@
             <label for="modal-btn">Thêm thông tin <i class="uil uil-expand-arrows"></i></label>
             <div class="modal">
               <div class="modal-wrap">
-                <img class="inside-wrap" src="./images/bacau.png" alt="product1">
+                <img class="inside-wrap" src="./libs/images/bacau.png" alt="product1">
                 <p>THIẾT KẾ NỘI THẤT BIỆT THỰ DƯƠNG NỘI
                   <br>
                   Chủ đề thiết kế: Không gian xanh
@@ -85,7 +88,7 @@
     <div class="col-md-6 col-12">
       <div class="product">
 
-        <img src="images/bacau.png" />
+        <img src="./libs/images/bacau.png" />
 
 
 
@@ -108,7 +111,7 @@
             <label for="modal-btn">Thêm thông tin <i class="uil uil-expand-arrows"></i></label>
             <div class="modal">
               <div class="modal-wrap">
-                <img class="inside-wrap" src="./images/bacau.png" alt="product1">
+                <img class="inside-wrap" src="./libs/images/bacau.png" alt="product1">
                 <p>THIẾT KẾ NỘI THẤT BIỆT THỰ DƯƠNG NỘI
                   <br>
                   Chủ đề thiết kế: Không gian xanh
@@ -138,3 +141,7 @@
 
 </div>
 </div>
+
+<?php
+  require_once("./view/footer.php");
+?>
