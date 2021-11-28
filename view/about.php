@@ -60,7 +60,7 @@
           <div class="col-lg-4 col-md-6 mb-5">
             <div class="post-entry-1 h-100 bg-white text-center">
               <a href="#" class="d-inline-block">
-                <img style="width: 200px;" src="./libs/images/person_2.jpg" alt="Image"
+                <img style="width: 200px;" src="https://scontent.fsgn5-11.fna.fbcdn.net/v/t1.6435-9/181156345_3030581590504155_766922592283269356_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=PO4NPHbEUA4AX-ny-8m&_nc_ht=scontent.fsgn5-11.fna&oh=85a4693781775581d0a7ea7640adfca2&oe=61CAB082" alt="Image"
                  class="img-fluid">
               </a>
               <div class="post-entry-1-contents">
@@ -73,7 +73,7 @@
           <div class="col-lg-4 col-md-6 mb-5">
             <div class="post-entry-1 h-100 bg-white text-center">
               <a href="#" class="d-inline-block">
-                <img style="width: 200px;" src="https://scontent.fsgn5-11.fna.fbcdn.net/v/t39.30808-1/p320x320/214197081_1239854566472833_6124847357724474649_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=7206a8&_nc_ohc=efX1J4OxLRUAX-UJLiT&_nc_ht=scontent.fsgn5-11.fna&oh=bb80e3d96563d07b0a7330fc74eea67b&oe=61A7EE15" alt="Image"
+                <img style="width: 200px;" src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.6435-9/38473822_516311245493839_110958177989689344_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=174925&_nc_ohc=iUtj8tmKYM0AX_-NXjL&_nc_ht=scontent.fsgn5-6.fna&oh=bdb9413fe9c1cdf9a74a962e32425456&oe=61C9309F" alt="Image"
                  class="img-fluid">
               </a>
               <div class="post-entry-1-contents">
@@ -87,7 +87,7 @@
           <div class="col-lg-4 col-md-6 mb-5">
             <div class="post-entry-1 h-100 bg-white text-center">
               <a href="#" class="d-inline-block">
-                <img style="width: 200px;" src="./libs/images/person_3.jpg" alt="Image"
+                <img style="width: 200px;" src="https://scontent.fsgn5-5.fna.fbcdn.net/v/t1.18169-9/28059346_1991618884187951_3200581235011917075_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=WNGwTVoVXgEAX_0SoUk&_nc_ht=scontent.fsgn5-5.fna&oh=572577eca4581a14441ba023d64db2ed&oe=61CAF62F" alt="Image"
                  class="img-fluid">
               </a>
               <div class="post-entry-1-contents">
