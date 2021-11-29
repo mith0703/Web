@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900|Roboto&display=swap" rel="stylesheet">
   
     <link rel="stylesheet" href="/mvc/libs/fonts/icomoon/style.css">
-
+    <link rel="icon" href="./libs/images/DIAMOND.ico">
     <link rel="stylesheet" href="/mvc/libs/css/bootstrap.min.css">
     <link rel="stylesheet" href="/mvc/libs/css/animate.min.css">
     <link rel="stylesheet" href="/mvc/libs/css/jquery.fancybox.min.css">
