@@ -1,7 +1,16 @@
 <?php
   require_once("./view/header.php");
+  require_once("./view/contactCustom.php");
+  if (isset($_GET['orderCustom'])){
+
+    $link = "https://docs.google.com/forms/d/e/1FAIpQLSfhfZg9oCdgBBunfrykj11FQh6ZMQaygDWJBN-ABUBgJLQU4g/viewform?usp=pp_url&entry.2061633732=".$_GET['hoCustom']."&entry.306682221=".$_GET['tenCustom']."&entry.1156816985=".$_GET['emailCustom']."&entry.1937864718=".$_GET['phoneCustom']."&entry.1508096938=".$_GET['txtCustom']."";    
+    echo <<< _END
+    <script>
+        window.open("$link","_blank");
+    </script>
+   _END;
+  }
 ?>
- 
  <div class="site-wrap" id="home-section">
 
       <div class="site-mobile-menu site-navbar-target">
@@ -34,33 +43,38 @@
         <div class="row">
           <div class="col-lg-6 mb-5" >
             <h1 class="heading-39291">Thông tin đặt hàng</h1>
-            <form action="#" method="post">
+            <form action="#" method="GET">
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="Họ">
+                  <input type="text" class="form-control" name="hoCustom" placeholder="Họ">
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Tên">
+                  <input type="text" class="form-control" name="tenCustom" placeholder="Tên">
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Địa chỉ email">
+                  <input type="text" class="form-control" name="emailCustom" placeholder="Địa chỉ email">
                 </div>
               </div>
-
               <div class="form-group row">
                 <div class="col-md-12">
-                  <textarea name="" id="" class="form-control" placeholder="Thông điệp của bạn là ?" cols="30" rows="10"></textarea>
+                  <input type="number" class="form-control" name="phoneCustom" placeholder="Số điện thoại">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <textarea  class="form-control" name="txtCustom" placeholder="Thông điệp của bạn là ?" cols="30" rows="10"></textarea>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-6 mr-auto">
-                  <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5 rounded-0" value="Gửi email">
+                  <input type="submit" name="orderCustom" class="btn btn-block btn-primary text-white py-3 px-5 rounded-0" value="Gửi email">
                 </div>
               </div>
             </form>
+
           </div>
           <div class="col-lg-6 ml-auto">
             <div class="bg-white p-3 p-md-5">
