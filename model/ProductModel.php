@@ -24,7 +24,7 @@ class productmodel extends Database
 
     public function getProduct($id)
     {
-        $stmt = $this->conn->prepare("SELECT ten_thiet_ke, chu_de, dien_tich, mau, cong_nghe, gia , img_product, mo_ta FROM product WHERE id = ?");
+        $stmt = $this->conn->prepare("SELECT id ,ten_thiet_ke, chu_de, dien_tich, mau, cong_nghe, gia , img_product, mo_ta FROM product WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();

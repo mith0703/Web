@@ -18,7 +18,7 @@
           <!-- Login Form -->
           <div id="loginPart">
             <input type="text" id="userName" class="fadeIn second" name="userName" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
             <input type="submit" name="login" id="login" class="fadeIn fourth" value="Đăng nhập">
          
           <br>

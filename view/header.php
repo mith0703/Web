@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="/mvc/libs/css/product.css">
     <link rel="stylesheet" href="/mvc/libs/css/register.css">
     <link rel="stylesheet" href="/mvc/libs/css/profile.css">
+
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="00bUJX6r"></script>
   </head>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -54,7 +57,7 @@
                 <a class="nav-link" href="/mvc/home">Trang chủ</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" href="/mvc/products" >Sản phẩm</a>
+              <a class="nav-link" href="/mvc/product" >Sản phẩm</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/mvc/news">Tin tức</a>

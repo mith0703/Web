@@ -54,8 +54,7 @@ require_once("./view/header.php");
       <br>
       <input type="text" id="mo_ta" class="fadeIn second" name="mo_ta" >
       <br>
-      <label for="phone">Số điện thoại</label>
-      <br>
+     
       <label for="img_product">Chọn hình ảnh sản phẩm</label>
       <br>
               <input type="file"
@@ -63,7 +62,7 @@ require_once("./view/header.php");
           accept="image/png, image/jpeg, image/pjpeg , image/gif">
 
       <br>
-      <input style="margin-left: 50%" id="signup" type="submit" name="signup" class="fadeIn fourth" value="Thêm tài khoản">
+      <input style="margin-left: 50%" id="signup" type="submit" name="signup" class="fadeIn fourth" value="Thêm sản phẩm">
     </form>      
 
 

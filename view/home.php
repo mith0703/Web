@@ -31,109 +31,64 @@
 
 <div class="site-section">
 <div class="container">
-  <h2 class="heading-39291 mb-0">Thiết kế</h2>
-  <div class="d-flex flex-sm-row flex-column flex-wrap container-md">
+<h2 class="heading-39291 mb-0">Thiết kế</h2>
+        <div class="d-flex flex-sm-row flex-column flex-wrap container-md">
+        <?php 
+           
+           if (isset($data['data'])){
 
-    <div class="col-md-6 col-12">
-      <div class="product">
-  
-        <img src="./libs/images/bacau.png" />
+            if (($data['data']->num_rows ?? 0) > 0){
+          
+                while ( $row =  $data['data']->fetch_assoc() ){
+                  $id = $row['id'];
+                  $ten_thiet_ke = $row['ten_thiet_ke'];
+                  $chu_de = $row['chu_de'];
+                  $dien_tich = $row['dien_tich'];
+                  $mau = $row['mau'];
+                  $cong_nghe = $row['cong_nghe'];
+                  $gia = $row['gia'];
+                  $img_product = $row['img_product'];
+                  $mo_ta =  $row['mo_ta'];
+                 $test = $row['img_product'] ;
+                    echo <<< _END
+                        <div class="col-md-6 col-12">
+                          <div class="product">
+                           
+                            <img src="$img_product" />
+                            
+                            <div class="intro">
+                              <p>
+                                <strong>$chu_de </strong>$mo_ta
+                              </p>
+                    
+                            </div class="summary">
+                    
+                            <div class="text">
+                              $ten_thiet_ke
+                              <br>
+                              Chủ đề thiết kế: $chu_de 
+                              <br>
+                              Diện tích:  $dien_tich <sup>2</sup>
+                              <div class="active-scroll">
+                                <form action="/mvc/product/getProductShow" method="POST">
+                                <input style="display:none"class="modal-btn" type="text" id="xem" name="xem" value="$id"/>
+                                <label style="height:45%; width:45%;"><button class="btn btn-warning"type="submit">Thêm thông tin</button></label>
+                    
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                    _END;
+                }
+            }
+          } else {
+            echo "Chưa có sữ liệu";
+    
+        }
 
-
-
-        <div class="intro">
-          <p>
-            <strong>Bắc Âu </strong>nền trang trí hiện đại theo khuynh hướng
-            thế giới, lịch sử, tao nhã và trang trọng
-          </p>
-
-        </div class="summary">
-
-        <div class="text">
-          THIẾT KẾ NỘI THẤT BIỆT THỰ DƯƠNG NỘI
-          <br>
-          Chủ đề thiết kế: Không gian xanh
-          <br>
-          Diện tích: 50m2
-          <div class="active-scroll">
-            <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
-            <label for="modal-btn">Thêm thông tin <i class="uil uil-expand-arrows"></i></label>
-            <div class="modal">
-              <div class="modal-wrap">
-                <img class="inside-wrap" src="./libs/images/bacau.png" alt="product1">
-                <p>THIẾT KẾ NỘI THẤT BIỆT THỰ DƯƠNG NỘI
-                  <br>
-                  Chủ đề thiết kế: Không gian xanh
-                  <br>
-                  Diện tích: 50m2
-                  <br>
-                  Màu chủ đạo: Xanh lá
-                  <br>
-                  Công nghệ đặc sắc: in 3D, gỗ hiếm
-                  <br>
-                  Giá: 12.000.000đ
-                </p>
-                <p>
-                  Conment
-                <div class="fb-comments" data-href="http://127.0.0.1:5500/Products2.html" data-width="800"
-                  data-numposts="5"></div>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-
-    <div class="col-md-6 col-12">
-      <div class="product">
-  
-        <img src="./libs/images/bacau.png" />
-
-
-
-        <div class="intro">
-          <p>
-            <strong>Bắc Âu </strong>nền trang trí hiện đại theo khuynh hướng
-            thế giới, lịch sử, tao nhã và trang trọng
-          </p>
-
-        </div class="summary">
-
-        <div class="text">
-          THIẾT KẾ NỘI THẤT BIỆT THỰ DƯƠNG NỘI
-          <br>
-          Chủ đề thiết kế: Không gian xanh
-          <br>
-          Diện tích: 50m2
-          <div class="active-scroll">
-            <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
-            <label for="modal-btn">Thêm thông tin <i class="uil uil-expand-arrows"></i></label>
-            <div class="modal">
-              <div class="modal-wrap">
-                <img class="inside-wrap" src="./images/bacau.png" alt="product1">
-                <p>THIẾT KẾ NỘI THẤT BIỆT THỰ DƯƠNG NỘI
-                  <br>
-                  Chủ đề thiết kế: Không gian xanh
-                  <br>
-                  Diện tích: 50m2
-                  <br>
-                  Màu chủ đạo: Xanh lá
-                  <br>
-                  Công nghệ đặc sắc: in 3D, gỗ hiếm
-                  <br>
-                  Giá: 12.000.000đ
-                </p>
-                <p>
-                  Conment
-                <div class="fb-comments" data-href="http://127.0.0.1:5500/Products2.html" data-width="800"
-                  data-numposts="5"></div>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        ?>
       </div>
       
     </div>

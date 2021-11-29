@@ -41,7 +41,7 @@ require_once("./view/header.php");
       <br>
       <label for="password">Mật khẩu</label>
       <br>
-      <input type="text" id="password" class="fadeIn third" name="password">
+      <input type="password" id="password" class="fadeIn third" name="password">
       <br>
       <label for="passwordConfirm">Nhập lại mật khẩu</label>
       <br>
