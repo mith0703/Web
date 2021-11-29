@@ -17,10 +17,10 @@
     </div>
     <div class="site-section">
       <div class="container" style="text-align:center">
-      <div id="message">
+      <!-- <div id="message">
           <p style='color: green'> <?php echo $data['msg'] ?? "" ?> </p> 
           <p style='color: red'>   <?php echo $data['err'] ?? "" ?> </p>
-          </div>
+          </div> -->
         
       <?php
       
@@ -87,7 +87,7 @@
 
       </div>
     </div>
-    <nav aria-label="Page navigation example">
+    <!-- <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         <li class="page-item disabled">
           <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -102,7 +102,7 @@
           <a class="page-link" href="#">Next</a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
 
 <?php
   require_once("./view/footer.php");

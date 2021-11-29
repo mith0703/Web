@@ -8,11 +8,10 @@
       <!-- Login Form -->
       <p style='color: green'>
       <?php echo $data['msg'] ?? "" ?></p>
-      <?php
-                    if (isset($data['err'])) {
-                        echo "<p style='color: red'>" . $data['err'] . "</p>";
-                    }
-                    ?>
+      <div id="message">
+          <p style='color: green'> <?php echo $data['msg'] ?? "" ?> </p> 
+          <p style='color: red'>   <?php echo $data['err'] ?? "" ?> </p>
+          </div>
       <form action="/mvc/user/signup" method="POST" enctype="multipart/form-data" >
       
         <br>

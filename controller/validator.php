@@ -3,9 +3,11 @@
 function isNameValid($name){
     $exp = "/[a-zA-Z0-9]{5,40}/";
     if (!preg_match($exp, $name)){
-        echo "Vui lòng nhâp chuỗi từ 5-40 ký tự \n";
+        return true;
+        // echo "Vui lòng nhâp chuỗi từ 5-40 ký tự \n";
     } else {
-        return $name;
+        return false;
+        // return $name;
     }
 
 }
@@ -13,7 +15,7 @@ function isNameValid($name){
 function isPasswordValid($name){
     $exp = "/[a-zA-Z0-9]{5,40}/";
     if (!preg_match($exp, $name)){
-        echo "Vui lòng nhâp chuỗi từ 5-40 ký tự \n";
+        // echo "Vui lòng nhâp chuỗi từ 5-40 ký tự \n";
     } else {
         return $name;
     }
@@ -26,7 +28,7 @@ function isEmailValid ($email) {
     if (preg_match( $regex, $email)) {
     $em = 1;
     } else {
-    echo "Email - Vui long nhap < sth >@< sth >.< sth ><br>";
+    // echo "Email - Vui long nhap < sth >@< sth >.< sth ><br>";
     $em = 0;
     }
 };

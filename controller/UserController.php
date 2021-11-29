@@ -17,7 +17,7 @@ class User extends Controller
             $address = "";
             $msg = "";
             $success = false;
-            if (isset($_POST['userName'])) {
+            if (isset($_POST['userName']) ) {
                 $userName = $_POST['userName'];
                 //$msg .= "1";
             }
