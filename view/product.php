@@ -10,8 +10,8 @@
       </div>
       <div class="owl-carousel owl-1 ">
         <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_1.jpg');"></div>
-        <div class="ftco-cover-1" style="background-image: url('images/hero_2.jpg');"></div>
-        <div class="ftco-cover-1" style="background-image: url('images/hero_3.jpg');"></div>
+        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_2.jpg');"></div>
+        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_3.jpg');"></div>
 
       </div>
     </div>
@@ -34,16 +34,16 @@
                   $gia = $row['gia'];
                   $img_product = $row['img_product'];
                   $mo_ta =  $row['mo_ta'];
-
+                  //echo $img_product;
                     echo <<< _END
                         <div class="col-md-6 col-12">
                         <div class="product">
-            
+
                           <img src="$img_product" />
             
                           <div class="intro">
                             <p>
-                              <strong>$chu_de </strong>
+                              <i>$chu_de </i>$mo_ta 
                             </p>
             
                           </div class="summary">
