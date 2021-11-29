@@ -42,7 +42,11 @@
 					if ($_SESSION['vai_tro'] == 1) {
 						echo <<< _END
 							<form action="/mvc/profile/usermanager">
-							<button type="submit" class="btn btn-primary btn-sm">Quản lý USER</button>
+							<button type="submit" class="btn btn-primary btn-sm">Quản lý Tài khoản</button>
+							</form>
+							<br>
+							<form action="/mvc/profile/productmanager">
+							<button type="submit" class="btn btn-primary btn-sm">Quản lý Sản phẩm</button>
 							</form>
 							_END;
 					}

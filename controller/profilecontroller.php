@@ -14,5 +14,9 @@ class Profile extends Controller
     function usermanager() {
         $this->view("usermanager");
     }
+
+    function productmanager() {
+        $this->view("productmanager");
+    }
 }
 ?>

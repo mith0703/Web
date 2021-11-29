@@ -19,12 +19,87 @@
       <div class="container">
         <h2 class="heading-39291 mb-0">Thiết kế</h2>
         <div class="d-flex flex-sm-row flex-column flex-wrap container-md">
-          <div class="col-md-6 col-12">
+        <?php 
+           
+           if (isset($data['data'])){
+
+            if (($data['data']->num_rows ?? 0) > 0){
+          
+                while ( $row =  $data['data']->fetch_assoc() ){
+                  $ten_thiet_ke = $row['ten_thiet_ke'];
+                  $chu_de = $row['chu_de'];
+                  $dien_tich = $row['dien_tich'];
+                  $mau = $row['mau'];
+                  $cong_nghe = $row['cong_nghe'];
+                  $gia = $row['gia'];
+                  $img_product = $row['img_product'];
+                  $mo_ta =  $row['mo_ta'];
+
+                    echo <<< _END
+                        <div class="col-md-6 col-12">
+                        <div class="product">
+            
+                          <img src="$img_product" />
+            
+                          <div class="intro">
+                            <p>
+                              <strong>$chu_de </strong>
+                            </p>
+            
+                          </div class="summary">
+            
+                          <div class="text">
+                            $ten_thiet_ke
+                            <br>
+                            Chủ đề thiết kế: $chu_de
+                            <br>
+                            Diện tích: $dien_tich <sup> m2 </sup>
+                            <div class="active-scroll">
+                              <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
+                              <label for="modal-btn">Thêm thông tin <i class="uil uil-expand-arrows"></i></label>
+                              <div class="modal">
+                                <div class="modal-wrap">
+                                  <img class="inside-wrap" src="$img_product" alt="product1">
+                                  <p>$ten_thiet_ke
+                                    <br>
+                                    Chủ đề thiết kế:  $chu_de
+                                    <br>
+                                    Diện tích: $dien_tich <sup> m2 </sup>
+                                    <br>
+                                    Màu chủ đạo: $mau
+                                    <br>
+                                    Công nghệ đặc sắc: $cong_nghe
+                                    <br>
+                                    Giá: $gia
+                                  </p>
+                                  <p>
+                                    Conment
+                                  <div class="fb-comments" data-href="http://127.0.0.1:5500/Products2.html" data-width="800"
+                                    data-numposts="5"></div>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+            
+                      </div>
+
+                    _END;
+                }
+            }
+          } else {
+            echo "Chưa có sữ liệu";
+    
+        }
+
+        ?>
+
+        
+          <!-- <div class="col-md-6 col-12">
             <div class="product">
 
               <img src="./libs/images/img_1.jpg" />
-
-
 
               <div class="intro">
                 <p>
@@ -223,7 +298,7 @@
               </div>
             </div>
 
-          </div>
+          </div> -->
         </div>
 
       </div>

@@ -1,12 +1,12 @@
 <?php
 
-class ProductModel extends Database
+class productmodel extends Database
 {
 
-    public function insertProduct($ten_thiet_ke, $chu_de, $dien_tich, $mau, $cong_nghe, $gia)
+    public function insertProduct($ten_thiet_ke, $chu_de, $dien_tich, $mau, $cong_nghe, $gia , $img_product, $mo_ta)
     {
-        $stmt = $this->conn->prepare("INSERT INTO product (ten_thiet_ke, chu_de, dien_tich, mau, cong_nghe, gia) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $ten_thiet_ke, $chu_de, $dien_tich, $mau, $cong_nghe, $gia);
+        $stmt = $this->conn->prepare("INSERT INTO product (ten_thiet_ke, chu_de, dien_tich, mau, cong_nghe, gia, img_product, mo_ta) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssss", $ten_thiet_ke, $chu_de, $dien_tich, $mau, $cong_nghe, $gia, $img_product, $mo_ta);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->affected_rows == 1)
@@ -24,7 +24,7 @@ class ProductModel extends Database
 
     public function getProduct($id)
     {
-        $stmt = $this->conn->prepare("SELECT ten_thiet_ke, chu_de, dien_tich, mau, cong_nghe, gia FROM product WHERE id = ?");
+        $stmt = $this->conn->prepare("SELECT ten_thiet_ke, chu_de, dien_tich, mau, cong_nghe, gia , img_product, mo_ta FROM product WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -48,10 +48,10 @@ class ProductModel extends Database
         return false;
     }
 
-    public function updateProduct($ten_thiet_ke, $chu_de, $dien_tich, $mau, $cong_nghe, $gia, $id)
+    public function updateProduct($ten_thiet_ke, $chu_de, $dien_tich, $mau, $cong_nghe, $gia, $img_product, $mo_ta, $id)
     {
-        $stmt = $this->conn->prepare("UPDATE product SET ten_thiet_ke = ?, chu_de = ?, dien_tich = ?, mau = ?, cong_nghe = ?, gia = ? WHERE id = ?");
-        $stmt->bind_param("sssssss",  $ten_thiet_ke, $chu_de, $dien_tich, $mau, $cong_nghe, $gia, $id);
+        $stmt = $this->conn->prepare("UPDATE product SET ten_thiet_ke = ?, chu_de = ?, dien_tich = ?, mau = ?, cong_nghe = ?, gia = ?, img_product = ?, mo_ta = ?  WHERE id = ?");
+        $stmt->bind_param("sssssssss",  $ten_thiet_ke, $chu_de, $dien_tich, $mau, $cong_nghe, $gia, $img_product,$mo_ta, $id);
         $status = $stmt->execute();
         if ($status == true) {
             // $_SESSION['name'] = $ten_dang_nhap;
