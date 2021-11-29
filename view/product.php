@@ -197,7 +197,7 @@
             </div>
 
           </div>
-          <div class="col-md-6 col-12">
+          <div class="col-md-6 col-12"> 
             <div class="product">
 
               <img src="./libs/images/img_3.jpg" />
