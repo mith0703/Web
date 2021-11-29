@@ -22,11 +22,11 @@
 	 
       <label for="password" style="text-align: left;">Mật khẩu mới</label>
       <br>
-      <input type="text" id="password" class="fadeIn second" name="password" >
+      <input type="password" id="password" class="fadeIn second" name="password" >
       <br>
       <label for="passwordConfirm" style="text-align: left;">Đánh lại mật khẩu mới</label>
       <br>
-      <input type="text" id="passwordConfirm" class="fadeIn second" name="passwordConfirm" >
+      <input type="password" id="passwordConfirm" class="fadeIn second" name="passwordConfirm" >
       <br>
       <input style="margin-left: 50% "id="update" type="submit" name="update" class="fadeIn fourth" value="Đổi mật khẩu">
     </form>

@@ -33,7 +33,7 @@
         <br>
         <label for="passwordConfirm">Nhập lại mật khẩu</label>
         <br>
-        <input type="text" id="passwordConfirm" class="fadeIn third" name="passwordConfirm">
+        <input type="password" id="passwordConfirm" class="fadeIn third" name="passwordConfirm">
         <br>
         <label for="address" style="text-align: left;">Địa chỉ</label>
         <br>
