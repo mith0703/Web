@@ -54,7 +54,7 @@
                 <a class="nav-link" href="/mvc/home">Trang chủ</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" href="/mvc/products" >Sản phẩm</a>
+              <a class="nav-link" href="/mvc/product" >Sản phẩm</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/mvc/news">Tin tức</a>
