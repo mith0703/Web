@@ -26,7 +26,6 @@
             if (($data['data']->num_rows ?? 0) > 0){
           
                 while ( $row =  $data['data']->fetch_assoc() ){
-                  $id = $row['id'];
                   $ten_thiet_ke = $row['ten_thiet_ke'];
                   $chu_de = $row['chu_de'];
                   $dien_tich = $row['dien_tich'];
@@ -35,37 +34,57 @@
                   $gia = $row['gia'];
                   $img_product = $row['img_product'];
                   $mo_ta =  $row['mo_ta'];
-                 $test = $row['img_product'] ;
+                  //echo $img_product;
                     echo <<< _END
                         <div class="col-md-6 col-12">
-                          <div class="product">
-                           
-                            <img src="$img_product" />
-                            
-                            <div class="intro">
-                              <p>
-                                <strong>$chu_de </strong>$mo_ta
-                              </p>
-                    
-                            </div class="summary">
-                    
-                            <div class="text">
-                              $ten_thiet_ke
-                              <br>
-                              Chủ đề thiết kế: $chu_de 
-                              <br>
-                              Diện tích:  $dien_tich <sup>2</sup>
-                              <div class="active-scroll">
-                                <form action="/mvc/product/getProductShow" method="POST">
-                                <input style="display:none"class="modal-btn" type="text" id="xem" name="xem" value="$id"/>
-                                <label style="height:45%; width:45%;"><button class="btn btn-warning"type="submit">Thêm thông tin</button></label>
-                    
-                                </form>
+                        <div class="product">
+
+                          <img src="$img_product" />
+            
+                          <div class="intro">
+                            <p>
+                              <i>$chu_de </i>$mo_ta 
+                            </p>
+            
+                          </div class="summary">
+            
+                          <div class="text">
+                            $ten_thiet_ke
+                            <br>
+                            Chủ đề thiết kế: $chu_de
+                            <br>
+                            Diện tích: $dien_tich <sup> m2 </sup>
+                            <div class="active-scroll">
+                              <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn" />
+                              <label for="modal-btn">Thêm thông tin <i class="uil uil-expand-arrows"></i></label>
+                              <div class="modal">
+                                <div class="modal-wrap">
+                                  <img class="inside-wrap" src="$img_product" alt="product1">
+                                  <p>$ten_thiet_ke
+                                    <br>
+                                    Chủ đề thiết kế:  $chu_de
+                                    <br>
+                                    Diện tích: $dien_tich <sup> m2 </sup>
+                                    <br>
+                                    Màu chủ đạo: $mau
+                                    <br>
+                                    Công nghệ đặc sắc: $cong_nghe
+                                    <br>
+                                    Giá: $gia
+                                  </p>
+                                  <p>
+                                    Conment
+                                  <div class="fb-comments" data-href="http://127.0.0.1:5500/Products2.html" data-width="800"
+                                    data-numposts="5"></div>
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      
+            
+                      </div>
+
                     _END;
                 }
             }
@@ -75,8 +94,6 @@
         }
 
         ?>
-
-        
         </div>
 
       </div>
