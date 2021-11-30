@@ -271,4 +271,34 @@ class News extends Controller
         }
         
     }
+
+    function getNewShow(){
+        if (isset($_POST['xem'])) {
+            $id = $_POST['xem'];
+
+
+            
+            require_once("./model/newsmodel.php");
+            $admin = new newsmodel();
+            $success = $admin->getNew($id);
+            // print_r($success);
+            if ($success == true) {
+            
+                $msg = "Lấy dữ liệu thành công";
+                $this->view("newsDetailShow", [
+                    "data" => $success,
+                    "msg" => $msg,
+                ]);
+                // echo "đang chay trong 2";
+                die;
+            } else {
+                // echo "đang chay trong 1";
+                $this->view("newsDetailShow", [
+                    "err" => "SQL bị lỗi hàm getDetails",
+                ]);
+            }
+        } else {
+            $this->view("newsDetailsShow", ["msg" => "Bị lỗi SQL hàm getDetails"]);
+        }
+    }
 }

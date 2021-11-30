@@ -54,7 +54,7 @@
                               <b>Mô tả: </b>$mo_ta 
                               <br>
                               <div class="active-scroll">
-                                <form action="/mvc/new/getAllNew" method="POST">
+                                <form action="/mvc/news/getNewShow" method="POST">
                                 <input style="display:none"class="modal-btn" type="text" id="xem" name="xem" value="$id_new"/>
                                 <label style="height:45%; width:45%;"><button class="btn btn-warning"type="submit">Thêm thông tin</button></label>
                     
