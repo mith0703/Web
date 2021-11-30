@@ -49,6 +49,10 @@
 							<button type="submit" class="btn btn-primary btn-sm">Quản lý Sản phẩm</button>
 							</form>
 							<br>
+							<form action="/mvc/profile/newsmanager">
+							<button type="submit" class="btn btn-primary btn-sm">Quản lý Tin tức</button>
+							</form>
+							<br>
 							<form action="https://livechat.oncustomer.asia/app/61a38b1f44d10e0331478917/dashboard">
 							<button type="submit" class="btn btn-primary btn-sm">Quản lý Chat</button>
 							</form>

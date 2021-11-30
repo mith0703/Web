@@ -230,7 +230,7 @@ class Product extends Controller
 
     function updateProduct()
     {
-        echo "dang chay trong 3";
+       
         if (isset($_POST['update'])) {
             
             $ten_thiet_ke = "";

@@ -1,12 +1,13 @@
 <?php
 
-class NewModel extends Database
+class newsmodel extends Database
 {
 
-    public function insertNew($tieu_de, $noi_dung)
+    public function insertNew($tieu_de, $noi_dung, $mo_ta, $thoi_gian, $img_new)
     {
-        $stmt = $this->conn->prepare("INSERT INTO news (tieu_de, noi_dung) VALUES (?, ?)");
-        $stmt->bind_param("ss", $tieu_de, $noi_dung);
+        $stmt = $this->conn->prepare("INSERT INTO news (tieu_de, noi_dung, mo_ta, thoi_gian, img_new) 
+                VALUES (?, ?, ?, ? , ?)");
+        $stmt->bind_param("sssss", $tieu_de, $noi_dung,  $mo_ta, $thoi_gian, $img_new);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->affected_rows == 1)
@@ -24,7 +25,7 @@ class NewModel extends Database
 
     public function getNew($id)
     {
-        $stmt = $this->conn->prepare("SELECT tieu_de, noi_dung FROM news WHERE id_new = ?");
+        $stmt = $this->conn->prepare("SELECT id_new,  tieu_de, noi_dung, mo_ta, thoi_gian, img_new FROM news WHERE id_new = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -48,10 +49,10 @@ class NewModel extends Database
         return false;
     }
 
-    public function updateProduct($tieu_de, $noi_dung, $id)
+    public function updateNew($tieu_de, $noi_dung, $mo_ta, $thoi_gian, $img_new, $id_new)
     {
-        $stmt = $this->conn->prepare("UPDATE news SET tieu_de = ?, noi_dung = ? WHERE id_new = ?");
-        $stmt->bind_param("sss", $tieu_de, $noi_dung, $id);
+        $stmt = $this->conn->prepare("UPDATE news SET tieu_de = ?, noi_dung = ?,  mo_ta=?, thoi_gian =? , img_new=? WHERE id_new = ?");
+        $stmt->bind_param("ssssss",$tieu_de, $noi_dung, $mo_ta, $thoi_gian, $img_new, $id_new);
         $status = $stmt->execute();
         if ($status == true) {
             // $_SESSION['name'] = $ten_dang_nhap;
