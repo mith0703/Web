@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900|Roboto&display=swap" rel="stylesheet">
   
     <link rel="stylesheet" href="/mvc/libs/fonts/icomoon/style.css">
-
+    <link rel="icon" href="./libs/images/DIAMOND.ico">
     <link rel="stylesheet" href="/mvc/libs/css/bootstrap.min.css">
     <link rel="stylesheet" href="/mvc/libs/css/animate.min.css">
     <link rel="stylesheet" href="/mvc/libs/css/jquery.fancybox.min.css">
@@ -92,10 +92,39 @@ input[type=password] {
                 <a class="nav-link" href="/mvc/contact" >Liên hệ</a>
               </li>
           </ul>
-          <form class="d-flex mr-2">
-            <input class="form-control" type="search" placeholder="Tìm kiếm" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit" style="width: 8em">Tìm kiếm</button>
+          <form class="d-flex mr-2" method="GET">
+            <!-- <input class="form-control" type="search" id="searchValue" placeholder="Tìm kiếm" aria-label="Search"> -->
+            <!-- <button class="btn btn-outline-success" id="searchBox" onclick="doSearch()" type="submit" style="width: 8em">Tìm kiếm</button> -->
+            <input class="form-control" style="margin-bottom:0px;"  placeholder="Tìm kiếm" type="text" id="search">
+            <input class="form-control" style="margin-bottom:0px;" type="hidden" id="hid_search">
+            <input class="btn btn-outline-success" style="margin-bottom:0px;" type="button" id="button" onmousedown="doSearch(document.getElementById('search').value)" value="Tìm kiếm">
           </form>
+          <script>
+        //https://www.google.com/search?q=facebook
+            function doSearch(text,color="yellow") {
+                if (color!="transparent") {
+                  doSearch(document.getElementById('hid_search').value,"transparent"); 
+                  document.getElementById('hid_search').value = text; 
+                  }
+                if (window.find && window.getSelection) {
+                    document.designMode = "on";
+                    var sel = window.getSelection();
+                    sel.collapse(document.body, 0);
+                    
+                    while (window.find(text)) {
+                        document.execCommand("HiliteColor", false, color);
+                        sel.collapseToEnd();
+                    }
+                    document.designMode = "off";
+                } else if (document.body.createTextRange) {
+                    var textRange = document.body.createTextRange();
+                    while (textRange.findText(text)) {
+                        textRange.execCommand("BackColor", false, color);
+                        textRange.collapse(false);
+                    }
+                }
+            }
+      </script>
           <a class="nav-item text-primary " href="/mvc/profile"
            <span class="mr-2 h-100" id="userLoginName">
              <?php if (isset($_SESSION['ten_dang_nhap'])) 
