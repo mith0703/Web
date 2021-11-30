@@ -79,15 +79,16 @@ input[type=password] {
             <li class="nav-item">
                 <a class="nav-link" href="/mvc/home">Trang chủ</a>
               </li>
+          <li class="nav-item">
+                <a class="nav-link" href="/mvc/about">Giới thiệu</a>
+              </li>
             <li class="nav-item">
               <a class="nav-link" href="/mvc/product" >Sản phẩm</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/mvc/news">Tin tức</a>
             </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="SignUp.html" >Đăng ký</a>
-              </li> -->
+
               <li class="nav-item">
                 <a class="nav-link" href="/mvc/contact" >Liên hệ</a>
               </li>
