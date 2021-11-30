@@ -127,12 +127,20 @@
         </tbody>
       </table>
       <?php echo <<< _END
-            <form action="/mvc/news/getAllNewsAdmin" method="POST">
+            <form action="/mvc/news/getAllNewAdminPagination" method="POST">
             <button class="btn btn-secondary btn-sm" name="laydulieu "type="submit">Lấy lại dữ liệu</button>
             <form>
             _END;
         ?>
 
+<nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          Trang
+          <?php
+            echo $data['ket_qua']??"";
+          ?>
+        </ul>
+      </nav>
             </div>
 		</div>
 	</div>

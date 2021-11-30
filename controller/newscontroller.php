@@ -3,7 +3,7 @@ class News extends Controller
 {
     function default()
     {
-        $this->getAllNew();
+        $this->getAllNewPagination();
     }
     function getAllNew()
     {
@@ -24,6 +24,174 @@ class News extends Controller
             ]);
         }
     }
+
+    function getAllNewPagination()
+    {
+        $results_per_page = 4;  
+        
+        //find the total number of results stored in the database  
+
+        $conn = NULL;
+        $server = 'localhost';
+        $dbName = 'nadu';
+        $user = 'root';
+        $password = '';
+
+        $conn = new mysqli($server, $user, $password, $dbName);
+
+		if ($conn->connect_error) {
+			printf($conn->connect_error);
+			exit();
+		}
+		$conn->set_charset("utf8");
+
+        $query = "select count(*) as total_row from news";  
+        $result = mysqli_query($conn, $query);  
+        $row = $result->fetch_assoc();
+  
+        $number_of_result =  $row['total_row'];
+
+        //determine the total number of pages available  
+        $number_of_page = ceil ($number_of_result / $results_per_page);  
+   
+        //determine which page number visitor is currently on  
+        if (!isset ($_GET['page']) ) {  
+            $page = 1;  
+        } else {  
+            $page = $_GET['page'];  
+        }  
+
+        //determine the sql LIMIT starting number for the results on the displaying page  
+        $page_first_result = ($page-1) * $results_per_page;  
+ 
+        //retrieve the selected results from database   
+        $query = "SELECT *FROM news LIMIT " . $page_first_result . ',' . $results_per_page;  
+        $result = mysqli_query($conn, $query);  
+        
+        // '<a href = "index2.php?page=' . $page . '">' . $page . ' </a>';  
+        //display the link of the pages in URL  
+        $ket_qua="";    
+        for($pageload = 1; $pageload<= $number_of_page; $pageload++) { 
+                
+                if ($pageload == $page){
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/news/getAllNew?page=$pageload'>$pageload</a></li>";
+                }
+
+                else {
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/news/getAllNewPagination?page=$pageload'>$pageload</a></li>"	;
+                }
+            }
+        // print_r($success);
+        if ($result == true) {
+            $msg = "Lấy dữ liệu thành công";
+            $this->view("news", [
+                "ket_qua" => $ket_qua,
+                "paginationData" => $result,
+                // "data" => $success,
+                "msg" => $msg,
+            ]);
+            die;
+        } else {
+            $this->view("news", [
+                "err" => "SQL bị lỗi",
+            ]);
+        }
+    }
+
+
+
+    function getAllNewAdminPagination()
+    {
+        $results_per_page = 4;  
+        
+        //find the total number of results stored in the database  
+
+        $conn = NULL;
+        $server = 'localhost';
+        $dbName = 'nadu';
+        $user = 'root';
+        $password = '';
+
+        $conn = new mysqli($server, $user, $password, $dbName);
+
+		if ($conn->connect_error) {
+			printf($conn->connect_error);
+			exit();
+		}
+		$conn->set_charset("utf8");
+
+        $query = "select count(*) as total_row from news";  
+        $result = mysqli_query($conn, $query);  
+        $row = $result->fetch_assoc();
+  
+        $number_of_result =  $row['total_row'];
+
+        //determine the total number of pages available  
+        $number_of_page = ceil ($number_of_result / $results_per_page);  
+   
+        //determine which page number visitor is currently on  
+        if (!isset ($_GET['page']) ) {  
+            $page = 1;  
+        } else {  
+            $page = $_GET['page'];  
+        }  
+
+        //determine the sql LIMIT starting number for the results on the displaying page  
+        $page_first_result = ($page-1) * $results_per_page;  
+ 
+        //retrieve the selected results from database   
+        $query = "SELECT *FROM news LIMIT " . $page_first_result . ',' . $results_per_page;  
+        $result = mysqli_query($conn, $query);  
+        
+        // '<a href = "index2.php?page=' . $page . '">' . $page . ' </a>';  
+        //display the link of the pages in URL  
+        $ket_qua="";    
+        for($pageload = 1; $pageload<= $number_of_page; $pageload++) { 
+                
+                if ($pageload == $page){
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/news/getAllNewAdminPagination?page=$pageload'>$pageload</a></li>";
+                }
+
+                else {
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/news/getAllNewAdminPagination?page=$pageload'>$pageload</a></li>"	;
+                }
+            }
+        // print_r($success);
+        if ($result == true) {
+            $msg = "Lấy dữ liệu thành công";
+            $this->view("newsmanager", [
+                "ket_qua" => $ket_qua,
+                "data" => $result,
+                // "data" => $success,
+                "msg" => $msg,
+            ]);
+            die;
+        } else {
+            $this->view("newsmanager", [
+                "err" => "SQL bị lỗi",
+            ]);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function getAllNewsAdmin(){
         require_once("./model/newsmodel.php");

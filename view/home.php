@@ -22,11 +22,11 @@
         <div class="d-flex flex-sm-row flex-column flex-wrap container-md">
         <?php 
            
-           if (isset($data['data'])){
+           if (isset($data['paginationData'])){
 
-            if (($data['data']->num_rows ?? 0) > 0){
+            if (($data['paginationData']->num_rows ?? 0) > 0){
           
-                while ( $row =  $data['data']->fetch_assoc() ){
+                while ( $row =  $data['paginationData']->fetch_assoc() ){
                   $id = $row['id'];
                   $ten_thiet_ke = $row['ten_thiet_ke'];
                   $chu_de = $row['chu_de'];
@@ -77,7 +77,14 @@
 
         ?>
       </div>
-      
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+        Trang
+          <?php
+            echo $data['ket_qua'];
+          ?>
+        </ul>
+      </nav>
     </div>
 
   </div>

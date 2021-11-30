@@ -21,11 +21,11 @@
         <div class="d-flex flex-sm-row flex-column flex-wrap container-md">
         <?php 
            
-           if (isset($data['data'])){
+           if (isset($data['paginationData'])){
 
-            if (($data['data']->num_rows ?? 0) > 0){
+            if (($data['paginationData']->num_rows ?? 0) > 0){
           
-                while ( $row =  $data['data']->fetch_assoc() ){
+                while ( $row =  $data['paginationData']->fetch_assoc() ){
                   $id_new = $row['id_new'];
                   $tieu_de = $row['tieu_de'];
                   $noi_dung = $row['noi_dung'];
@@ -140,18 +140,10 @@
  
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-          </li>
-
-          <li class="page-item active">
-            <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
+          Trang
+          <?php
+            echo $data['ket_qua'];
+          ?>
         </ul>
       </nav>
 

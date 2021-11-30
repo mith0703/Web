@@ -4,19 +4,169 @@ class Product extends Controller
     function default()
     {
         // $this->view("product");
-        $this->getAllProduct();
+        $this->getAllProductPagination();
     }
 
-    function getAllProduct()
+    // function getAllProduct()
+    // {
+    //     require_once("./model/productmodel.php");
+    //     $product = new productmodel();
+    //     $success = $product->getAllProduct();
+
+
+
+
+        
+    //     // print_r($success);
+    //     if ($success == true) {
+    //         $msg = "Lấy dữ liệu thành công";
+    //         $this->view("product", [
+    //             "data" => $success,
+    //             "msg" => $msg,
+    //         ]);
+    //         die;
+    //     } else {
+    //         $this->view("product", [
+    //             "err" => "SQL bị lỗi",
+    //         ]);
+    //     }
+    // }
+
+    function getAllProductAdminPagination()
     {
-        require_once("./model/productmodel.php");
-        $product = new productmodel();
-        $success = $product->getAllProduct();
+        $results_per_page = 4;  
+        
+        //find the total number of results stored in the database  
+
+        $conn = NULL;
+        $server = 'localhost';
+        $dbName = 'nadu';
+        $user = 'root';
+        $password = '';
+
+        $conn = new mysqli($server, $user, $password, $dbName);
+
+		if ($conn->connect_error) {
+			printf($conn->connect_error);
+			exit();
+		}
+		$conn->set_charset("utf8");
+
+        $query = "select count(*) as total_row from product";  
+        $result = mysqli_query($conn, $query);  
+        $row = $result->fetch_assoc();
+  
+        $number_of_result =  $row['total_row'];
+
+        //determine the total number of pages available  
+        $number_of_page = ceil ($number_of_result / $results_per_page);  
+   
+        //determine which page number visitor is currently on  
+        if (!isset ($_GET['page']) ) {  
+            $page = 1;  
+        } else {  
+            $page = $_GET['page'];  
+        }  
+
+        //determine the sql LIMIT starting number for the results on the displaying page  
+        $page_first_result = ($page-1) * $results_per_page;  
+ 
+        //retrieve the selected results from database   
+        $query = "SELECT *FROM product LIMIT " . $page_first_result . ',' . $results_per_page;  
+        $result = mysqli_query($conn, $query);  
+        
+        // '<a href = "index2.php?page=' . $page . '">' . $page . ' </a>';  
+        //display the link of the pages in URL  
+        $ket_qua="";    
+        for($pageload = 1; $pageload<= $number_of_page; $pageload++) { 
+                
+                if ($pageload == $page){
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/product/getAllProductAdminPagination?page=$pageload'>$pageload</a></li>";
+                }
+
+                else {
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/product/getAllProductAdminPagination?page=$pageload'>$pageload</a></li>"	;
+                }
+            }
         // print_r($success);
-        if ($success == true) {
+        if ($result == true) {
+            $msg = "Lấy dữ liệu thành công";
+            $this->view("productmanager", [
+                "ket_qua" => $ket_qua,
+                "data" => $result,
+                // "data" => $success,
+                "msg" => $msg,
+            ]);
+            die;
+        } else {
+            $this->view("productmanager", [
+                "err" => "SQL bị lỗi",
+            ]);
+        }
+    }
+    function getAllProductPagination()
+    {
+        $results_per_page = 4;  
+        
+        //find the total number of results stored in the database  
+
+        $conn = NULL;
+        $server = 'localhost';
+        $dbName = 'nadu';
+        $user = 'root';
+        $password = '';
+
+        $conn = new mysqli($server, $user, $password, $dbName);
+
+		if ($conn->connect_error) {
+			printf($conn->connect_error);
+			exit();
+		}
+		$conn->set_charset("utf8");
+
+        $query = "select count(*) as total_row from product";  
+        $result = mysqli_query($conn, $query);  
+        $row = $result->fetch_assoc();
+  
+        $number_of_result =  $row['total_row'];
+
+        //determine the total number of pages available  
+        $number_of_page = ceil ($number_of_result / $results_per_page);  
+   
+        //determine which page number visitor is currently on  
+        if (!isset ($_GET['page']) ) {  
+            $page = 1;  
+        } else {  
+            $page = $_GET['page'];  
+        }  
+
+        //determine the sql LIMIT starting number for the results on the displaying page  
+        $page_first_result = ($page-1) * $results_per_page;  
+ 
+        //retrieve the selected results from database   
+        $query = "SELECT *FROM product LIMIT " . $page_first_result . ',' . $results_per_page;  
+        $result = mysqli_query($conn, $query);  
+        
+        // '<a href = "index2.php?page=' . $page . '">' . $page . ' </a>';  
+        //display the link of the pages in URL  
+        $ket_qua="";    
+        for($pageload = 1; $pageload<= $number_of_page; $pageload++) { 
+                
+                if ($pageload == $page){
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/product/getAllProductPagination?page=$pageload'>$pageload</a></li>";
+                }
+
+                else {
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/product/getAllProductPagination?page=$pageload'>$pageload</a></li>"	;
+                }
+            }
+        // print_r($success);
+        if ($result == true) {
             $msg = "Lấy dữ liệu thành công";
             $this->view("product", [
-                "data" => $success,
+                "ket_qua" => $ket_qua,
+                "paginationData" => $result,
+                // "data" => $success,
                 "msg" => $msg,
             ]);
             die;
@@ -26,6 +176,7 @@ class Product extends Controller
             ]);
         }
     }
+
 
     function getProductShow(){
         if (isset($_POST['xem'])) {
@@ -58,11 +209,6 @@ class Product extends Controller
     }
 
 
-
-
-
-
-
     function getAllProductAdmin()
     {
         require_once("./model/productmodel.php");
@@ -84,87 +230,7 @@ class Product extends Controller
         }
     }
 
-    function getAllProductAdminPagination()
-    {
-        try {
-            // require_once ("./core/Database.php");
-            // Find out how many items are in the table
-        
-            $total = $this->conn->query('
-                SELECT
-                    COUNT(*)
-                FROM
-                    product
-            ')->fetchColumn();
-        
-            // How many items to list per page
-            $limit = 20;
-        
-            // How many pages will there be
-            $pages = ceil($total / $limit);
-        
-            // What page are we currently on?
-            $page = min($pages, filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT, array(
-                'options' => array(
-                    'default'   => 1,
-                    'min_range' => 1,
-                ),
-            )));
-        
-            // Calculate the offset for the query
-            $offset = ($page - 1)  * $limit;
-        
-            // Some information to display to the user
-            $start = $offset + 1;
-            $end = min(($offset + $limit), $total);
-        
-            // The "back" link
-            $prevlink = ($page > 1) ? '<a href="?page=1" title="First page">&laquo;</a> <a href="?page=' . ($page - 1) . '" title="Previous page">&lsaquo;</a>' : '<span class="disabled">&laquo;</span> <span class="disabled">&lsaquo;</span>';
-        
-            // The "forward" link
-            $nextlink = ($page < $pages) ? '<a href="?page=' . ($page + 1) . '" title="Next page">&rsaquo;</a> <a href="?page=' . $pages . '" title="Last page">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> <span class="disabled">&raquo;</span>';
-        
-            // Display the paging information
-            echo '<div id="paging"><p>', $prevlink, ' Page ', $page, ' of ', $pages, ' pages, displaying ', $start, '-', $end, ' of ', $total, ' results ', $nextlink, ' </p></div>';
-        
-            // Prepare the paged query
-            $stmt = $this->conn->prepare('
-                SELECT
-                    *
-                FROM
-                    product
-                ORDER BY
-                    id
-                LIMIT
-                    :limit
-                OFFSET
-                    :offset
-            ');
-        
-            // Bind the query params
-            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-            $stmt->execute();
-        
-            // Do we have any results?
-            if ($stmt->rowCount() > 0) {
-                // Define how we want to fetch the results
-                $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                $iterator = new IteratorIterator($stmt);
-        
-                // Display the results
-                foreach ($iterator as $row) {
-                    echo '<p>', $row['name'], '</p>';
-                }
-        
-            } else {
-                echo '<p>No results could be displayed.</p>';
-            }
-        
-        } catch (Exception $e) {
-            echo '<p>', $e->getMessage(), '</p>';
-        }
-    }
+    
 
     function addProduct()
     {
