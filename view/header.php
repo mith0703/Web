@@ -8,7 +8,7 @@
 
 
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900|Roboto&display=swap" rel="stylesheet">
-  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/mvc/libs/fonts/icomoon/style.css">
     <link rel="icon" href="./libs/images/DIAMOND.ico">
     <link rel="stylesheet" href="/mvc/libs/css/bootstrap.min.css">
