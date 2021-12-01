@@ -6,32 +6,6 @@ class Product extends Controller
         // $this->view("product");
         $this->getAllProductPagination();
     }
-
-    // function getAllProduct()
-    // {
-    //     require_once("./model/productmodel.php");
-    //     $product = new productmodel();
-    //     $success = $product->getAllProduct();
-
-
-
-
-        
-    //     // print_r($success);
-    //     if ($success == true) {
-    //         $msg = "Lấy dữ liệu thành công";
-    //         $this->view("product", [
-    //             "data" => $success,
-    //             "msg" => $msg,
-    //         ]);
-    //         die;
-    //     } else {
-    //         $this->view("product", [
-    //             "err" => "SQL bị lỗi",
-    //         ]);
-    //     }
-    // }
-
     function getAllProductAdminPagination()
     {
         $results_per_page = 4;  
@@ -81,11 +55,12 @@ class Product extends Controller
         for($pageload = 1; $pageload<= $number_of_page; $pageload++) { 
                 
                 if ($pageload == $page){
-                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/product/getAllProductAdminPagination?page=$pageload'>$pageload</a></li>";
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/product?page=$pageload'>$pageload</a></li>";
                 }
 
                 else {
-                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/product/getAllProductAdminPagination?page=$pageload'>$pageload</a></li>"	;
+                    //getAllProductAdminPagination
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/product?page=$pageload'>$pageload</a></li>"	;
                 }
             }
         // print_r($success);
@@ -153,11 +128,11 @@ class Product extends Controller
         for($pageload = 1; $pageload<= $number_of_page; $pageload++) { 
                 
                 if ($pageload == $page){
-                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/product/getAllProductPagination?page=$pageload'>$pageload</a></li>";
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/product?page=$pageload'>$pageload</a></li>";
                 }
 
                 else {
-                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/product/getAllProductPagination?page=$pageload'>$pageload</a></li>"	;
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/product?page=$pageload'>$pageload</a></li>"	;
                 }
             }
         // print_r($success);
@@ -437,8 +412,6 @@ class Product extends Controller
             } else {
 
                 echo "dang chay trong 1";
-                // $password = password_hash($password, PASSWORD_DEFAULT);
-                // if ( $_FILES["file"]["error"] == 0){
                 $img_product = $this->upload_file_product($dien_tich, $_FILES);
 
                 require_once("./model/ProductModel.php");

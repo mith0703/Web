@@ -75,14 +75,13 @@
         for($pageload = 1; $pageload<= $number_of_page; $pageload++) { 
                 
                 if ($pageload == $page){
-                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/product/getAllProductPagination?page=$pageload'>$pageload</a></li>";
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item active'><a class='page-link' href='/mvc/product?page=$pageload'>$pageload</a></li>";//getAllProductPagination
                 }
 
                 else {
-                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/product/getAllProductPagination?page=$pageload'>$pageload</a></li>"	;
+                    $ket_qua = $ket_qua . "<li id='pagination' class='page-item'><a class='page-link' href='/mvc/product?page=$pageload'>$pageload</a></li>";//getAllProductPagination
                 }
             }
-        // print_r($success);
         if ($result == true) {
             $msg = "Lấy dữ liệu thành công";
             $this->view("home", [

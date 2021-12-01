@@ -207,13 +207,6 @@ class User extends Controller
         $user = new usermodel();
     
         $userdata = $user->getUser($_SESSION['id']);
-        // if (isset($id[0])) {
-        //     $user = $this->model("usermodel");
-        //     $userdata = $user->getuser($id[0]);
-        //     if ($userdata != []){
-        //         $this->view("userprofileupdateview",$userdata);
-        //     }
-        // }
 
         if (isset($_POST['update'])) {
 
@@ -222,8 +215,6 @@ class User extends Controller
             $lastName = "";
             $email = "";
             $phone = "";
-            // $password = "";
-            // $passwordConfirm="";
             $vai_tro = "0";
             $img_profile = "";
             $address = "";
@@ -273,12 +264,7 @@ class User extends Controller
                 }
                 if ($success == true) {
                     $msg = "Đã cập nhật thành công!";
-                    // $show = "<script>
-                    //                 MySUSModal1.show();
-                    //             </script>";
-
                     $this->view("profile", [
-                        // "show" => $show,
                         "msg" => $msg,
                     ]);
                     die;
