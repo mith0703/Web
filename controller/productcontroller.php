@@ -184,7 +184,7 @@ class Product extends Controller
             // echo $id;
 
             
-            require_once("./model/productmodel.php");
+            require_once("./model/ProductModel.php");
             $admin = new productmodel();
             $success = $admin->getProduct($id);
             // print_r($success);
@@ -211,7 +211,7 @@ class Product extends Controller
 
     function getAllProductAdmin()
     {
-        require_once("./model/productmodel.php");
+        require_once("./model/ProductModel.php");
         $product = new productmodel();
         $success = $product->getAllProduct();
         // print_r($success);
@@ -287,7 +287,7 @@ class Product extends Controller
 
                 // $signup = $this->model("usermodel"); //usermodel la ten file usermodel.php
 
-                require_once("./model/productmodel.php");
+                require_once("./model/ProductModel.php");
                 $product = new productmodel();
                 // $signup->insertUser()
 
@@ -334,7 +334,7 @@ class Product extends Controller
         if (isset($_POST['xem'])) {
             $id = $_POST['xem'];
             // print($id);
-            require_once("./model/productmodel.php");
+            require_once("./model/ProductModel.php");
             $admin = new productmodel();
             $success = $admin->getProduct($id);
             if ($success == true) {
@@ -360,7 +360,7 @@ class Product extends Controller
         if (isset($_POST['sua'])) {
             $id = $_POST['sua'];
             // print($id);
-            require_once("./model/productmodel.php");
+            require_once("./model/ProductModel.php");
             $admin = new productmodel();
             $success = $admin->getProduct($id);
             if ($success == true) {
@@ -441,7 +441,7 @@ class Product extends Controller
                 // if ( $_FILES["file"]["error"] == 0){
                 $img_product = $this->upload_file_product($dien_tich, $_FILES);
 
-                require_once("./model/productmodel.php");
+                require_once("./model/ProductModel.php");
                 $admin = new productmodel();
                 $success = $admin->updateProduct(
                     $ten_thiet_ke,
@@ -485,7 +485,7 @@ class Product extends Controller
     function deleteProduct() {
         if (isset($_POST['xoa'])) {
             $id = $_POST['xoa'];
-        require_once("./model/productmodel.php");
+        require_once("./model/ProductModel.php");
         $admin = new productmodel();
         $success = $admin->deleteProduct($id);
         if ($success == true) {

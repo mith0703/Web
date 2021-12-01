@@ -9,7 +9,7 @@
 
         function getAllProduct()
         {
-            require_once("./model/productmodel.php");
+            require_once("./model/ProductModel.php");
             $product = new productmodel();
             $success = $product->getAllProduct();
             // print_r($success);

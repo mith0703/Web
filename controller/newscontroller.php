@@ -7,7 +7,7 @@ class News extends Controller
     }
     function getAllNew()
     {
-        require_once("./model/newsmodel.php");
+        require_once("./model/NewsModel.php");
         $new = new newsmodel();
         $success = $new->getAllNew();
         // print_r($success);
@@ -194,7 +194,7 @@ class News extends Controller
 
 
     function getAllNewsAdmin(){
-        require_once("./model/newsmodel.php");
+        require_once("./model/NewsModel.php");
         $new = new newsmodel();
         $success = $new->getAllNew();
         // print_r($success);
@@ -217,7 +217,7 @@ class News extends Controller
         if (isset($_POST['xem'])) {
             $id = $_POST['xem'];
             // print($id);
-            require_once("./model/newsmodel.php");
+            require_once("./model/NewsModel.php");
             $admin = new newsmodel();
             $success = $admin->getNew($id);
             if ($success == true) {
@@ -272,7 +272,7 @@ class News extends Controller
 
                 // $signup = $this->model("usermodel"); //usermodel la ten file usermodel.php
 
-                require_once("./model/newsmodel.php");
+                require_once("./model/NewsModel.php");
                 $product = new newsmodel();
                 // $signup->insertUser()
 
@@ -315,7 +315,7 @@ class News extends Controller
         if (isset($_POST['sua'])) {
             $id = $_POST['sua'];
             // print($id);
-            require_once("./model/newsmodel.php");
+            require_once("./model/NewsModel.php");
             $admin = new newsmodel();
             $success = $admin->getNew($id);
             if ($success == true) {
@@ -376,7 +376,7 @@ class News extends Controller
             } else {
                 $img_new = $this->upload_file_news($id_new, $_FILES);
 
-                require_once("./model/newsmodel.php");
+                require_once("./model/NewsModel.php");
                 $product = new newsmodel();
  
                 $success = $product->updateNew(
@@ -418,7 +418,7 @@ class News extends Controller
     function deleteNew() {
         if (isset($_POST['xoa'])) {
             $id = $_POST['xoa'];
-        require_once("./model/newsmodel.php");
+        require_once("./model/NewsModel.php");
         $admin = new newsmodel();
         $success = $admin->deleteNew($id);
         if ($success == true) {
@@ -446,7 +446,7 @@ class News extends Controller
 
 
             
-            require_once("./model/newsmodel.php");
+            require_once("./model/NewsModel.php");
             $admin = new newsmodel();
             $success = $admin->getNew($id);
             // print_r($success);

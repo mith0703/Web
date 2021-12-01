@@ -84,7 +84,7 @@ class Admin extends Controller
     function deleteUser() {
         if (isset($_POST['xoa'])) {
             $id = $_POST['xoa'];
-        require_once("./model/usermodel.php");
+        require_once("./model/UserModel.php");
         $admin = new usermodel();
         $success = $admin->deleteUser($id);
         if ($success == true) {
@@ -175,7 +175,7 @@ class Admin extends Controller
 
                 // $signup = $this->model("usermodel"); //usermodel la ten file usermodel.php
 
-                require_once("./model/usermodel.php");
+                require_once("./model/UserModel.php");
                 $signup = new usermodel();
                 // $signup->insertUser()
 
@@ -213,7 +213,7 @@ class Admin extends Controller
     function getAllUser()
     {
         if ($_SESSION['vai_tro']) {
-            require_once("./model/usermodel.php");
+            require_once("./model/UserModel.php");
             $admin = new usermodel();
             $success = $admin->getAllUser();
             // print_r($success);
@@ -237,7 +237,7 @@ class Admin extends Controller
     }
 
     function updateAdminUser() {
-        require_once("./model/usermodel.php");
+        require_once("./model/UserModel.php");
         $user = new usermodel();
         // echo "Dang chay updateAdminUser";
         if (isset($_POST['update'])) {
@@ -358,7 +358,7 @@ class Admin extends Controller
         if (isset($_POST['sua'])) {
             $id = $_POST['sua'];
             // print($id);
-            require_once("./model/usermodel.php");
+            require_once("./model/UserModel.php");
             $admin = new usermodel();
             $success = $admin->getUser($id);
             if ($success == true) {
@@ -387,7 +387,7 @@ class Admin extends Controller
         if (isset($_POST['xem'])) {
             $id = $_POST['xem'];
             // print($id);
-            require_once("./model/usermodel.php");
+            require_once("./model/UserModel.php");
             $admin = new usermodel();
             $success = $admin->getUser($id);
             if ($success == true) {
