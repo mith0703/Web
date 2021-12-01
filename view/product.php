@@ -9,9 +9,9 @@
         </div>
       </div>
       <div class="owl-carousel owl-1 ">
-        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_1.jpg');"></div>
-        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_2.jpg');"></div>
-        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_3.jpg');"></div>
+        <div class="ftco-cover-1" style="background-image: url('../libs/images/hero_1.jpg');"></div>
+        <div class="ftco-cover-1" style="background-image: url('../libs/images/hero_2.jpg');"></div>
+        <div class="ftco-cover-1" style="background-image: url('../libs/images/hero_3.jpg');"></div>
 
       </div>
     </div>
