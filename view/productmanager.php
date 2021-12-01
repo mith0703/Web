@@ -64,10 +64,6 @@ require_once("./view/header.php");
       <br>
       <input style="margin-left: 50%" id="signup" type="submit" name="signup" class="fadeIn fourth" value="Thêm sản phẩm">
     </form>      
-
-
-
-
   </div>
     <!-- </form> -->
     <br>
@@ -126,37 +122,22 @@ require_once("./view/header.php");
     
         }
             ?>
-          <!-- <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-                <button class="read btn btn-primary">Đọc</button>
-                <button class="edit btn btn-warning">Sửa</button>
-                <button class="delete btn btn-danger">Xóa</buton>
-      
-            </td>
-          </tr> -->
-          
         </tbody>
       </table>
-      <?php echo <<< _END
-            <form action="/mvc/product/getAllProductAdminPagination" method="POST">
-            <button class="btn btn-secondary btn-sm" name="laydulieu "type="submit">Lấy lại dữ liệu</button>
-            <form>
-            _END;
-        ?>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          Trang
-          <?php
-            echo $data['ket_qua']??"";
-          ?>
-        </ul>
-      </nav>
-    
-
+            <?php echo <<< _END
+                  <form action="/mvc/product/getAllProductAdminPagination" method="POST">
+                  <button class="btn btn-secondary btn-sm" name="laydulieu "type="submit">Lấy lại dữ liệu</button>
+                  <form>
+                  _END;
+              ?>
+          <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                Trang
+                <?php
+                  echo $data['ket_qua']??"";
+                ?>
+              </ul>
+            </nav>
             </div>
         </div>
     </div>

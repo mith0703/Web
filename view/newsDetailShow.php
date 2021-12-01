@@ -20,10 +20,10 @@ require_once("./view/header.php");
     </div>
     <div class="site-section">
       <div class="container" style="text-align:left">
-      <!-- <div id="message">
-          <p style='color: green'> <?php echo $data['msg'] ?? "" ?> </p> 
-          <p style='color: red'>   <?php echo $data['err'] ?? "" ?> </p>
-          </div> -->
+
+<?php echo $data['msg'] ?? "" ?> 
+<?php echo $data['err'] ?? "" ?> 
+
         
       <?php
       

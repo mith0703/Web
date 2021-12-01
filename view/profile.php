@@ -1,108 +1,66 @@
 <?php
   require_once("./view/header.php");
 ?>
-   <div class="owl-carousel-wrapper">
-      <div class="box-92819 shadow-lg">
-        <div>
-          <h1 class=" mb-3 text-black">Sản phẩm</h1>
-          <p>Mang lại giải pháp thiết kế tối ưu, bảo toàn công năng, tiện nghi hiện đại cho mọi loại hình nhà ở hiện nay.</p>
-        </div>
-      </div>
-      <div class="owl-carousel owl-1 ">
-        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_1.jpg');"></div>
-        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_2.jpg');"></div>
-        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_3.jpg');"></div>
+ 
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			
+		<?php require_once("./view/sidebar.php"); ?>
 
-      </div>
-    </div>
-    <div class="site-section">
-      <div class="container">
-        <h2 class="heading-39291 mb-0">Thiết kế</h2>
-        <div class="d-flex flex-sm-row flex-column flex-wrap container-md">
-        <?php 
-           
-           if (isset($data['paginationData'])){
+		</div>
+		<div class="col-md-9">
+            <div class="profile-content">
+			<div id="message">
+          <p style='color: green'> <?php echo $data['msg'] ?? "" ?> </p> 
+          <p style='color: red'>   <?php echo $data['err'] ?? "" ?> </p>
+          </div>
+            <form action="/mvc/user/userprofile" method="POST" enctype="multipart/form-data" >
+      
+      <br>
+	 
+      <!-- <label for="userName" style="text-align: left;">Tên đăng nhập</label>
+      <br>
+      <input type="text" id="userName" class="fadeIn second" name="userName" value=<?php echo $_SESSION['ten_dang_nhap'] ?>>
+      <br> -->
+      <label for="firstName" style="text-align: left;">Tên</label>
+      <br>
+      <input type="text" id="firstName" class="fadeIn second" value="<?php echo $_SESSION['ten'] ?>"name="firstName" >
+      <br>
+      <label for="lastName" style="text-align: left;">Họ</label>
+      <br>
+      <input type="text" id="lastName" class="fadeIn second" name="lastName" value="<?php echo $_SESSION['ho'] ?>" >
+      <br>
+      <label for="address" style="text-align: left;">Địa chỉ</label>
+      <br>
+      <input type="text" id="address" class="fadeIn second" name="address" value="<?php echo $_SESSION['dia_chi'] ?>">
+      <br>
+      <label for="email" style="text-align: left;">Email</label>
+      <br>
+      <input type="text" id="email" class="fadeIn second" name="email" value="<?php echo $_SESSION['email'] ?>">
+      <br>
+      <label for="phone">Số điện thoại</label>
+      <br>
+      <input type="text" id="phone" class="fadeIn third" name="phone" value="<?php echo $_SESSION['dien_thoai'] ?>">
+      <br>
+      <label for="img_profile">Chọn hình ảnh đại diện</label>
+      <br>
+              <input type="file"
+          id="file" name="file"
+          accept="image/png, image/jpeg, image/pjpeg , image/gif"
+		 	value="<?php echo $_SESSION['img_profile'] ?>" 
+		  >
 
-            if (($data['paginationData']->num_rows ?? 0) > 0){
-          
-                while ( $row =  $data['paginationData']->fetch_assoc() ){
-                  $id = $row['id'];
-                  $ten_thiet_ke = $row['ten_thiet_ke'];
-                  $chu_de = $row['chu_de'];
-                  $dien_tich = $row['dien_tich'];
-                  $mau = $row['mau'];
-                  $cong_nghe = $row['cong_nghe'];
-                  $gia = $row['gia'];
-                  $img_product = $row['img_product'];
-                  $mo_ta =  $row['mo_ta'];
-                 $test = $row['img_product'] ;
-                    echo <<< _END
-                        <div class="col-md-6 col-12">
-                          <div class="product">
-                           
-                            <img src="$img_product" />
-                            
-                            <div class="intro">
-                              <p>
-                                <strong>$chu_de </strong>$mo_ta
-                              </p>
-                    
-                            </div class="summary">
-                    
-                            <div class="text">
-                              $ten_thiet_ke
-                              <br>
-                              Chủ đề thiết kế: $chu_de 
-                              <br>
-                              Diện tích:  $dien_tich <sup>2</sup>
-                              <div class="active-scroll">
-                                <form action="/mvc/product/getProductShow" method="POST">
-                                <input style="display:none"class="modal-btn" type="text" id="xem" name="xem" value="$id"/>
-                                <label style="height:45%; width:45%;"><button class="btn btn-warning"type="submit">Thêm thông tin</button></label>
-                    
-                                </form>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      
-                    _END;
-                }
-            }
-          } else {
-            echo "Chưa có sữ liệu";
-    
-        }
+      <br>
+      <input style="margin-left: 50% "id="update" type="submit" name="update" class="fadeIn fourth" value="Lưu">
+    </form>
+            </div>
+		</div>
+	</div>
+</div>
 
-        ?>
-
-        
-        </div>
-
-      </div>
-    </div>
-
-     
-     <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-      Trang 
-      <?php  
-         echo $data['ket_qua'];
-      ?> 
-       <!-- <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-          </li>
-
-          <li class="page-item active">
-            <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li> -->
-        </ul>
-    </nav> 
+<br>
+<br>
 
 <?php
   require_once("./view/footer.php");

@@ -17,11 +17,10 @@
     </div>
     <div class="site-section">
       <div class="container" style="text-align:center">
-      <!-- <div id="message">
-          <p style='color: green'> <?php echo $data['msg'] ?? "" ?> </p> 
-          <p style='color: red'>   <?php echo $data['err'] ?? "" ?> </p>
-          </div> -->
-        
+
+ <?php echo $data['msg'] ?? "" ?> 
+ <?php echo $data['err'] ?? "" ?>
+
       <?php
       
       if (isset($data['data'])){
@@ -87,23 +86,6 @@
 
       </div>
     </div>
-    <!-- <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-
-        <li class="page-item active">
-          <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-        </li>
-      </ul>
-    </nav> -->
-
 <?php
   require_once("./view/footer.php");
 ?>

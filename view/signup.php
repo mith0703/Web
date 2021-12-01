@@ -19,13 +19,6 @@
         <br>
         <input type="text" id="userName" class="fadeIn second" name="userName" >
         <br>
-        <?php
-        //$validatorSignup = new usermodel();
-        if (isset($_GET['userName'])){
-            //$checkUserName = $validatorSignup->validateUsername($_POST['userName']);
-         // echo "alert('aaaaaa')";
-        }        
-        ?>
         <script>      
              $(document).ready(function(){
                     $('#userName').keyup(function(){
@@ -178,10 +171,6 @@
         <br>
         <input id="signup" type="submit" name="signup" class="fadeIn fourth" value="Đăng ký">
       </form>
-      
-
-
-
       <a href="/mvc/user/login">Đăng Nhập</a>
       <!-- Remind Passowrd -->
       <div id="formFooter">

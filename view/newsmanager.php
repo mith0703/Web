@@ -111,19 +111,6 @@
     
         }
             ?>
-          <!-- <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-                <button class="read btn btn-primary">Đọc</button>
-                <button class="edit btn btn-warning">Sửa</button>
-                <button class="delete btn btn-danger">Xóa</buton>
-      
-            </td>
-          </tr> -->
-          
         </tbody>
       </table>
       <?php echo <<< _END

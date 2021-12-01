@@ -63,17 +63,7 @@
       <br>
       <input  disabled type="text" id="phone" class="fadeIn third" name="phone" value="<?php echo $data['data']['img_profile'] ?>">
       <br>
-      
-
-
-     
- 
-    
-     
-
-
-    
-            </div>
+      </div>
 		</div>
 	</div>
 </div>

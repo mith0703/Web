@@ -58,18 +58,7 @@
       <br>
       <input disabled type="text" id="img_product" class="fadeIn third" name="img_product" value="<?php echo $data['data']['img_product'] ?>">
       <br>
-   
-      
-
-
-     
- 
-    
-     
-
-
-    
-            </div>
+      </div>
 		</div>
 	</div>
 </div>

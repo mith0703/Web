@@ -17,12 +17,9 @@ require_once("./view/header.php");
 					<p style='color: red'> <?php echo $data['err'] ?? "" ?> </p>
 				</div>
 		
-                    <div>
+            <div>
                 <button class="btn btn-info btn-sm" onclick="createClick2501()" >Tạo mới</button>
-                </div>
-
-
-    <!-- <form action="b.php" method="POST"> -->
+            </div>
     <div id="hidden2501" >
     <form action="/mvc/admin/signupAdmin" method="POST" enctype="multipart/form-data" >
       
@@ -72,10 +69,6 @@ require_once("./view/header.php");
       <br>
       <input style="margin-left: 50%" id="signup" type="submit" name="signup" class="fadeIn fourth" value="Thêm tài khoản">
     </form>      
-
-
-
-
   </div>
     <!-- </form> -->
     <br>
@@ -127,26 +120,13 @@ require_once("./view/header.php");
                     </td>
                 _END;
                 echo "</tr>";
-            }
-        }
-        } else {
-            echo "<th id='id_column' colspan='5' scope='row'  style='text-align:center'>Bấm lấy dữ liệu </th>";
-    
-        }
+                    }
+                }
+                } else {
+                    echo "<th id='id_column' colspan='5' scope='row'  style='text-align:center'>Bấm lấy dữ liệu </th>";
+            
+                }
             ?>
-          <!-- <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-                <button class="read btn btn-primary">Đọc</button>
-                <button class="edit btn btn-warning">Sửa</button>
-                <button class="delete btn btn-danger">Xóa</buton>
-      
-            </td>
-          </tr> -->
-         
         </ul>
       </nav>
         </tbody>

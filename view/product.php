@@ -9,9 +9,9 @@
         </div>
       </div>
       <div class="owl-carousel owl-1 ">
-        <div class="ftco-cover-1" style="background-image: url('../libs/images/hero_1.jpg');"></div>
-        <div class="ftco-cover-1" style="background-image: url('../libs/images/hero_2.jpg');"></div>
-        <div class="ftco-cover-1" style="background-image: url('../libs/images/hero_3.jpg');"></div>
+        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_1.jpg');"></div>
+        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_2.jpg');"></div>
+        <div class="ftco-cover-1" style="background-image: url('./libs/images/hero_3.jpg');"></div>
 
       </div>
     </div>
@@ -22,7 +22,6 @@
         <?php 
            
            if (isset($data['paginationData'])){
-
             if (($data['paginationData']->num_rows ?? 0) > 0){
           
                 while ( $row =  $data['paginationData']->fetch_assoc() ){
@@ -89,18 +88,6 @@
       <?php  
          echo $data['ket_qua'];
       ?> 
-       <!-- <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-          </li>
-
-          <li class="page-item active">
-            <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li> -->
         </ul>
     </nav> 
 

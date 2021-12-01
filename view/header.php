@@ -77,16 +77,17 @@ input[type=password] {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/mvc/home/getAllProductPagination">Trang chủ</a>
+                <a class="nav-link" href="/mvc/home">Trang chủ</a>
               </li>
           <li class="nav-item">
                 <a class="nav-link" href="/mvc/about">Giới thiệu</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" href="/mvc/product/getAllProductPagination" >Sản phẩm</a>
+              <a class="nav-link" href="/mvc/product" >Sản phẩm</a>
             </li>
+            <!-- getAllNewPagination -->
             <li class="nav-item">
-              <a class="nav-link" href="/mvc/news/getAllNewPagination">Tin tức</a>
+              <a class="nav-link" href="/mvc/news">Tin tức</a>
             </li>
 
               <li class="nav-item">
