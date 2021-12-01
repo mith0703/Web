@@ -1,6 +1,5 @@
 <?php
   require_once("./view/header.php");
-  require_once("./view/contactCustom.php");
   if (isset($_GET['orderCustom'])){
 
     $link = "https://docs.google.com/forms/d/e/1FAIpQLSfhfZg9oCdgBBunfrykj11FQh6ZMQaygDWJBN-ABUBgJLQU4g/viewform?usp=pp_url&entry.2061633732=".$_GET['hoCustom']."&entry.306682221=".$_GET['tenCustom']."&entry.1156816985=".$_GET['emailCustom']."&entry.1937864718=".$_GET['phoneCustom']."&entry.1508096938=".$_GET['txtCustom']."";    
